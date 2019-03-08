@@ -175,7 +175,12 @@ features commands and options to format the
 \hypertarget{data-souce}{%
 \subsection{Data souce}\label{data-souce}}
 
-https://datacatalog.worldbank.org/dataset/universal-health-coverage-global-monitoring-data-2017
+\begin{itemize}
+\item
+  \url{https://datacatalog.worldbank.org/dataset/universal-health-coverage-global-monitoring-data-2017}
+\item
+  \url{http://apps.who.int/nha/database/Select/Indicators/en}
+\end{itemize}
 
 \hypertarget{statistical-analyses}{%
 \subsection{Statistical Analyses}\label{statistical-analyses}}
@@ -203,6 +208,25 @@ to conform your choice to the journal you are submitting to.
   \KeywordTok{assign}\NormalTok{(}\KeywordTok{gsub}\NormalTok{(}\StringTok{".csv"}\NormalTok{, }\StringTok{""}\NormalTok{, i),}
 \NormalTok{         readr}\OperatorTok{::}\KeywordTok{read_csv}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(}\StringTok{'Data/UHC_CSV/'}\NormalTok{, i)))}
 \NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pacman}\OperatorTok{::}\KeywordTok{p_load}\NormalTok{(tidyverse, tidyr)}
+\NormalTok{wbank =}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{'Data/d8871a79-5272-4d42-9039-d8522d2b12ea_Data.csv'}\NormalTok{, }\DataTypeTok{na.strings =} \StringTok{'..'}\NormalTok{)}
+
+\NormalTok{d1 =}\StringTok{ }\NormalTok{wbank }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\DataTypeTok{country =}\NormalTok{ Country.Name, }\DataTypeTok{countrycode =}\NormalTok{ Country.Code, }
+         \DataTypeTok{var_name =}\NormalTok{ Series.Name,  }\DataTypeTok{var_code =}\NormalTok{ Series.Code, }\KeywordTok{everything}\NormalTok{()) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{countrycode, }\OperatorTok{-}\StringTok{ }\NormalTok{var_name)}
+
+\NormalTok{dlong =}\StringTok{ }\NormalTok{d1 }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{gather}\NormalTok{(}\DataTypeTok{key =} \StringTok{'year'}\NormalTok{, }\DataTypeTok{value =} \StringTok{'value'}\NormalTok{, }\OperatorTok{-}\NormalTok{country, }\OperatorTok{-}\NormalTok{var_code) }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{na.omit}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{year =} \KeywordTok{as.integer}\NormalTok{(}\KeywordTok{substr}\NormalTok{(year, }\DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{)))}
+
+\KeywordTok{count}\NormalTok{(dlong, year)}
 \end{Highlighting}
 \end{Shaded}
 
