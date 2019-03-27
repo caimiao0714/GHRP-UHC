@@ -1,0 +1,34 @@
+\blandscape
+```{r results='asis'}
+pacman::p_load(stargazer)
+codebook1=data.table::fread('Data/codebook1.csv')
+stargazer(codebook1[1:33,], summary=FALSE, rownames=FALSE,
+          title = 'Code book for country level data from the WHO')
+
+#knitr::kable(codebook, format = 'latex', caption = 'Code book for country level data from the WHO')
+```
+\elandscape
+
+
+
+> names(f0)
+ [1] "CountryName"           "CountryCode"           "WHORegion"
+ [4] "IncomeGroup"           "Year"                  "CFACHE_SHA2011"
+ [7] "CHEGDP_SHA2011"        "CHE_pc_PPP_SHA2011"    "CHE_pc_US_SHA2011"
+[10] "CHICHE_SHA2011"        "DOMCHE_SHA2011"        "GFACHE_SHA2011"
+[13] "GGHEDCHE_SHA2011"      "GGHEDGDP_SHA2011"      "GGHEDGGE_SHA2011"
+[16] "GGHED_pc_PPP_SHA2011"  "GGHED_pc_US_SHA2011"   "OOP_pc_PPP_SHA2011"
+[19] "OOP_pc_US_SHA2011"     "OOPSCHE_SHA2011"       "OTHERCHE_SHA2011"
+[22] "PVTDCHE_SHA2011"       "PVTD_pc_PPP_SHA2011"   "PVTD_pc_US_SHA2011"
+[25] "sha11FS"               "sha11FS1"              "sha11FS11"
+[28] "sha11FS5"              "sha11FS6"              "sha11FS61"
+[31] "sha11HF"               "sha11HF1"              "sha11HF11"
+[34] "sha11HF2"              "sha11HF21"             "sha11HF3"
+[37] "VFACHE_SHA2011"        "VHICHE_SHA2011"        "Status"
+[40] "Lifeexpectancy"        "AdultMortality"        "infantdeaths"
+[43] "Alcohol"               "percentageexpenditure" "HepatitisB"
+[46] "Measles"               "BMI"                   "underfivedeaths"
+[49] "Polio"                 "Totalexpenditure"      "Diphtheria"
+[52] "HIVAIDS"               "GDP"                   "Population"
+[55] "thinness119"           "thinness59"            "IncomeComp"
+[58] "Schooling"

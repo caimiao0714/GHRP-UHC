@@ -2,7 +2,7 @@
 %%% Begin My package additions %%%%%%%%%%%%%%%%%%%
 \usepackage[hyphens]{url}
 
-  \journal{Global Health Research and Policy} % Sets Journal name
+  \journal{Global Health Research and Policy - Thematic Series: Universal Health Coverage} % Sets Journal name
 
 
 \usepackage{lineno} % add
@@ -35,47 +35,17 @@
 % use microtype if available
 \IfFileExists{microtype.sty}{\usepackage{microtype}}{}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\usepackage{framed}
-\definecolor{shadecolor}{RGB}{248,248,248}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\BuiltInTok}[1]{#1}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
-\newcommand{\ExtensionTok}[1]{#1}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ImportTok}[1]{#1}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\NormalTok}[1]{#1}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable}
+\usepackage{graphicx}
+% We will generate all images so they have a width \maxwidth. This means
+% that they will get their normal width if they fit onto the page, but
+% are scaled down if they would overflow the margins.
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+\else\Gin@nat@width\fi}
+\makeatother
+\let\Oldincludegraphics\includegraphics
+\renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=\maxwidth]{#1}}
 \ifxetex
   \usepackage[setpagesize=false, % page size defined by xetex
               unicode=false, % unicode breaks when used with xetex
@@ -86,7 +56,7 @@
 \hypersetup{breaklinks=true,
             bookmarks=true,
             pdfauthor={},
-            pdftitle={Short Paper},
+            pdftitle={Looking at the effect of primary care investment on life expectency in different economic strata of countries},
             colorlinks=true,
             urlcolor=blue,
             linkcolor=blue,
@@ -96,20 +66,25 @@
 \setcounter{secnumdepth}{5}
 % Pandoc toggle for numbering sections (defaults to be off)
 % Pandoc header
+\usepackage{soulutf8}
+\usepackage{color}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{lscape}
 
 
 
 \begin{document}
 \begin{frontmatter}
 
-  \title{Short Paper}
-    \author[SLU]{Miao Cai\corref{c1}}
+  \title{Looking at the effect of primary care investment on life expectency in different economic strata of countries}
+    \author[SLU]{Miao Cai}
    \ead{miao.cai@slu.edu} 
-   \cortext[c1]{Corresponding Author}
-    \author[Sichuan University]{Xiaojun Lin}
-   \ead{xjlin@hust.edu.cn} 
   
-    \author[Wuhan University]{Xin Li}
+    \author[SCU]{Xiaojun Lin\corref{c1}}
+   \ead{xjlin@hust.edu.cn} 
+   \cortext[c1]{Corresponding Author}
+    \author[WHU]{Xin Li}
    \ead{xl60@iu.edu} 
   
       \address[SLU]{Saint Louis University, Saint Louis, MO, 63108}
@@ -124,50 +99,34 @@
   
  \end{frontmatter}
 
+\newcommand{\blandscape}{\begin{landscape}}
+\newcommand{\elandscape}{\end{landscape}}
+
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-\hypertarget{installation}{%
-\paragraph{Installation}\label{installation}}
+Universal health coverage (UHC) is one of the key approaches in achieving the 2030 Agenda for Sustainable Development Goals (SDGs). On October 25-26, 2018, the Global Conference on Primary Health Care was held in Kazakhstan, and the Declaration of Astana was signed by 197 Member States under the leadership of the World Health Organization (WHO). In this Declaration, strengthening primary health care system has been considered as an essential step towards achieving Universal Health Coverage.
 
-If the document class \emph{elsarticle} is not available on your computer,
-you can download and install the system package \emph{texlive-publishers}
-(Linux) or install the LaTeX package \emph{elsarticle} using the package
-manager of your TeX installation, which is typically TeX Live or MikTeX.
-
-\hypertarget{usage}{%
-\paragraph{Usage}\label{usage}}
-
-Once the package is properly installed, you can use the document class
-\emph{elsarticle} to create a manuscript. Please make sure that your
-manuscript follows the guidelines in the Guide for Authors of the
-relevant journal. It is not necessary to typeset your manuscript in
-exactly the same way as an article, unless you are submitting to a
-camera-ready copy (CRC) journal.
-
-\hypertarget{functionality}{%
-\paragraph{Functionality}\label{functionality}}
-
-The Elsevier article class is based on the standard article class and
-supports almost all of the functionality of that class. In addition, it
-features commands and options to format the
+This thematic series of articles is being launched by the Global Health Research and Policy (GHRP) to serve as a platform to disseminate current research findings, insights, new perspectives, and policy recommendations in promoting UHC worldwide. This will serve to create better knowledge transfer from researches to policy-making and practices and for information and experience sharing. GHRP is encouraging submissions of commentaries, reviews, research articles, and short report of policies on the key elements of UHC. Elements that can be covered in the submissions may include, but not limited to the following:
 
 \begin{itemize}
 \item
-  document style
+  Health financing system strengthening, with special focus on the development of health financial protection schemes for the disadvantaged population, as well as the integration of different insurance programs.
 \item
-  baselineskip
+  Primary healthcare system strengthening, with special focus on health workforce and delivery network of primary health care services, equity and quality of primary health care, information systems construction, etc.
 \item
-  front matter
+  People-centered health care system, with special focus on the integration of specialist healthcare services and primary health care, and the provision of continuous services to improve patient experience, etc.
 \item
-  keywords and MSC codes
+  Essential medicines and health products, with special focus on strategic purchasing, relevant mechanism designs and market entry for insurance benefit package.
 \item
-  theorems, definitions and proofs
-\item
-  lables of enumerations
-\item
-  citation style and labeling.
+  Medical assistance programs for poverty alleviation as an approach to increase UHC.
 \end{itemize}
+
+This thematic series will be guest edited by Dr.~Beibei Yuan (beibeiyuan@bjmu.edu.cn), Associate Professor from Peking University and Dr.~Lanting Lu (lanting.lu@ruc.edu.cn), Associate Professor from Renmin University of China.
+
+Submissions from anywhere in the world are welcome. Authors are advised to select the Thematic Series option ``Universal Health Coverage'' during their submission. The deadline of submission is on April 15, 2019.
+
+This is an introduction {[}\protect\hyperlink{ref-wagstaff2018progress}{1}{]}.
 
 \hypertarget{methods}{%
 \section{Methods}\label{methods}}
@@ -176,59 +135,39 @@ features commands and options to format the
 \subsection{Data souce}\label{data-souce}}
 
 \begin{itemize}
+\tightlist
 \item
-  \url{https://datacatalog.worldbank.org/dataset/universal-health-coverage-global-monitoring-data-2017}
+  \texttt{Data/AllData.xlsx}: \href{http://apps.who.int/nha/database/Select/Indicators/en}{WHO country level variables}
 \item
-  \url{http://apps.who.int/nha/database/Select/Indicators/en}
+  \texttt{Data/life-expectancy-who/Life\ Expectancy\ Data.csv}: \href{https://www.kaggle.com/kumarajarshi/life-expectancy-who/data}{Life expectancy and mortality}
 \end{itemize}
+
+In an effort to promote reproducible research, we have created a public GitHub repository to store all the data and R code we use to write this paper.
+Interested readers can find them at \url{https://github.com/caimiao0714/GHRP-UHC}.
+
+\hypertarget{variable-selection}{%
+\subsection{Variable selection}\label{variable-selection}}
+
+Outcome: life expectancy
+
+Independent variables:
+
+Country level:
+
+\begin{itemize}
+\item
+  CountryName (random intercept)
+\item
+  Current Health Expenditure (CHE) as \% Gross Domestic Product (GDP): \texttt{CHEGDP\_SHA2011}
+\item
+\end{itemize}
+
+Continent level
 
 \hypertarget{statistical-analyses}{%
 \subsection{Statistical Analyses}\label{statistical-analyses}}
 
-The author names and affiliations could be formatted in two ways:
-
-\begin{enumerate}
-\def\labelenumi{(\arabic{enumi})}
-\item
-  Group the authors per affiliation.
-\item
-  Use footnotes to indicate the affiliations.
-\end{enumerate}
-
-See the front matter of this document for examples. You are recommended
-to conform your choice to the journal you are submitting to.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{require}\NormalTok{(tidyverse)}
-
-\NormalTok{csv_files =}\StringTok{ }\KeywordTok{list.files}\NormalTok{(}\StringTok{'Data/UHC_CSV'}\NormalTok{, }\DataTypeTok{pattern =} \StringTok{'.csv$'}\NormalTok{)}
-
-\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in}\NormalTok{ csv_files)\{}
-  \KeywordTok{assign}\NormalTok{(}\KeywordTok{gsub}\NormalTok{(}\StringTok{".csv"}\NormalTok{, }\StringTok{""}\NormalTok{, i),}
-\NormalTok{         readr}\OperatorTok{::}\KeywordTok{read_csv}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(}\StringTok{'Data/UHC_CSV/'}\NormalTok{, i)))}
-\NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{pacman}\OperatorTok{::}\KeywordTok{p_load}\NormalTok{(tidyverse, tidyr)}
-\NormalTok{wbank =}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{'Data/d8871a79-5272-4d42-9039-d8522d2b12ea_Data.csv'}\NormalTok{, }\DataTypeTok{na.strings =} \StringTok{'..'}\NormalTok{)}
-
-\NormalTok{d1 =}\StringTok{ }\NormalTok{wbank }\OperatorTok{%>%}\StringTok{ }
-\StringTok{  }\KeywordTok{select}\NormalTok{(}\DataTypeTok{country =}\NormalTok{ Country.Name, }\DataTypeTok{countrycode =}\NormalTok{ Country.Code, }
-         \DataTypeTok{var_name =}\NormalTok{ Series.Name,  }\DataTypeTok{var_code =}\NormalTok{ Series.Code, }\KeywordTok{everything}\NormalTok{()) }\OperatorTok{%>%}\StringTok{ }
-\StringTok{  }\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{countrycode, }\OperatorTok{-}\StringTok{ }\NormalTok{var_name)}
-
-\NormalTok{dlong =}\StringTok{ }\NormalTok{d1 }\OperatorTok{%>%}\StringTok{ }
-\StringTok{  }\KeywordTok{gather}\NormalTok{(}\DataTypeTok{key =} \StringTok{'year'}\NormalTok{, }\DataTypeTok{value =} \StringTok{'value'}\NormalTok{, }\OperatorTok{-}\NormalTok{country, }\OperatorTok{-}\NormalTok{var_code) }\OperatorTok{%>%}\StringTok{ }
-\StringTok{  }\KeywordTok{na.omit}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
-\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{year =} \KeywordTok{as.integer}\NormalTok{(}\KeywordTok{substr}\NormalTok{(year, }\DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{)))}
-
-\KeywordTok{count}\NormalTok{(dlong, year)}
-\end{Highlighting}
-\end{Shaded}
+\includegraphics{Figures/fig1.pdf}
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
@@ -247,6 +186,10 @@ Here are two sample references:
 \hypertarget{references}{%
 \section*{References}\label{references}}
 \addcontentsline{toc}{section}{References}
+
+\hypertarget{refs}{}
+\leavevmode\hypertarget{ref-wagstaff2018progress}{}%
+1. Wagstaff A, Flores G, Smitz M-F, Hsu J, Chepynoga K, Eozenou P. Progress on impoverishing health spending in 122 countries: A retrospective observational study. The Lancet Global Health. 2018;6:e180--92.
 
 \end{document}
 

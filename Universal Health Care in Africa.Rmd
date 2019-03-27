@@ -1,16 +1,17 @@
 ---
-title: Short Paper
+title: Looking at the effect of primary care investment on life expectency in different economic strata of countries
+subtitle: 
 author:
   - name: Miao Cai
     email: miao.cai@slu.edu
     affiliation: SLU
-    footnote: Corresponding Author
   - name: Xiaojun Lin
     email: xjlin@hust.edu.cn
-    affiliation: Sichuan University
+    affiliation: SCU
+    footnote: Corresponding Author
   - name: Xin Li
     email: xl60@iu.edu
-    affiliation: Wuhan University
+    affiliation: WHU
 address:
   - code: SLU
     address: Saint Louis University, Saint Louis, MO, 63108
@@ -18,9 +19,10 @@ address:
     address: Sichuan University, Chengdu, Sichuan, China
   - code: WHU
     address: Wuhan University, Wuhan, Hubei, China
-journal: "Global Health Research and Policy"
+journal: "Global Health Research and Policy - Thematic Series: Universal Health Coverage"
 date: "`r Sys.Date()`"
 bibliography: ref.bib
+csl: BMC.csl
 output:
   bookdown::pdf_book:
     base_format: rticles::elsevier_article
@@ -31,6 +33,12 @@ fig_caption: yes
 indent: true
 link-citation: true
 link-color: blue
+header-includes:
+  - \usepackage{soulutf8}
+  - \usepackage{color}
+  - \usepackage{float}
+  - \usepackage{booktabs}
+  - \usepackage{lscape}
 abstract: |
   This is the abstract.
 
@@ -38,45 +46,36 @@ abstract: |
 
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+\newcommand{\blandscape}{\begin{landscape}}
+\newcommand{\elandscape}{\end{landscape}}
 
 Introduction
 ============
 
-#### Installation
+Universal health coverage (UHC) is one of the key approaches in achieving the 2030 Agenda for Sustainable Development Goals (SDGs). On October 25-26, 2018, the Global Conference on Primary Health Care was held in Kazakhstan, and the Declaration of Astana was signed by 197 Member States under the leadership of the World Health Organization (WHO). In this Declaration, strengthening primary health care system has been considered as an essential step towards achieving Universal Health Coverage.
 
-If the document class *elsarticle* is not available on your computer,
-you can download and install the system package *texlive-publishers*
-(Linux) or install the LaTeX package *elsarticle* using the package
-manager of your TeX installation, which is typically TeX Live or MikTeX.
+This thematic series of articles is being launched by the Global Health Research and Policy (GHRP) to serve as a platform to disseminate current research findings, insights, new perspectives, and policy recommendations in promoting UHC worldwide. This will serve to create better knowledge transfer from researches to policy-making and practices and for information and experience sharing. GHRP is encouraging submissions of commentaries, reviews, research articles, and short report of policies on the key elements of UHC. Elements that can be covered in the submissions may include, but not limited to the following:
 
-#### Usage
+- Health financing system strengthening, with special focus on the development of health financial protection schemes for the disadvantaged population, as well as the integration of different insurance programs.
 
-Once the package is properly installed, you can use the document class
-*elsarticle* to create a manuscript. Please make sure that your
-manuscript follows the guidelines in the Guide for Authors of the
-relevant journal. It is not necessary to typeset your manuscript in
-exactly the same way as an article, unless you are submitting to a
-camera-ready copy (CRC) journal.
+- Primary healthcare system strengthening, with special focus on health workforce and delivery network of primary health care services, equity and quality of primary health care, information systems construction, etc.
 
-#### Functionality
+- People-centered health care system, with special focus on the integration of specialist healthcare services and primary health care, and the provision of continuous services to improve patient experience, etc.
 
-The Elsevier article class is based on the standard article class and
-supports almost all of the functionality of that class. In addition, it
-features commands and options to format the
+- Essential medicines and health products, with special focus on strategic purchasing, relevant mechanism designs and market entry for insurance benefit package.
 
--   document style
+- Medical assistance programs for poverty alleviation as an approach to increase UHC.
 
--   baselineskip
+This thematic series will be guest edited by Dr. Beibei Yuan (beibeiyuan@bjmu.edu.cn), Associate Professor from Peking University and Dr. Lanting Lu (lanting.lu@ruc.edu.cn), Associate Professor from Renmin University of China.
 
--   front matter
+Submissions from anywhere in the world are welcome. Authors are advised to select the Thematic Series option "Universal Health Coverage" during their submission. The deadline of submission is on April 15, 2019.  
 
--   keywords and MSC codes
 
--   theorems, definitions and proofs
-
--   lables of enumerations
-
--   citation style and labeling.
+This is an introduction [@wagstaff2018progress].
 
 Methods
 =======
@@ -84,50 +83,105 @@ Methods
 Data souce
 ----------
 
-- [https://datacatalog.worldbank.org/dataset/universal-health-coverage-global-monitoring-data-2017](https://datacatalog.worldbank.org/dataset/universal-health-coverage-global-monitoring-data-2017)
+- `Data/AllData.xlsx`: [WHO country level variables](http://apps.who.int/nha/database/Select/Indicators/en)
+- `Data/life-expectancy-who/Life Expectancy Data.csv`: [Life expectancy and mortality](https://www.kaggle.com/kumarajarshi/life-expectancy-who/data)
 
-- [http://apps.who.int/nha/database/Select/Indicators/en](http://apps.who.int/nha/database/Select/Indicators/en)
+In an effort to promote reproducible research, we have created a public GitHub repository to store all the data and R code we use to write this paper. 
+Interested readers can find them at [https://github.com/caimiao0714/GHRP-UHC](https://github.com/caimiao0714/GHRP-UHC).
+
+Variable selection
+------------------
+
+Outcome: life expectancy
+
+Independent variables:
+
+Country level: 
+
+- CountryName (random intercept)
+- Current Health Expenditure (CHE) as % Gross Domestic Product (GDP): `CHEGDP_SHA2011`
+- 
+
+Continent level
 
 
 Statistical Analyses
 --------------------
 
-The author names and affiliations could be formatted in two ways:
 
-(1) Group the authors per affiliation.
 
-(2) Use footnotes to indicate the affiliations.
+```{r eval=FALSE}
+pacman::p_load(tidyverse)
+#d1 = rio::import('Data/AllData.xlsx')
+#data.table::fwrite(d1, 'Data/alldat.csv')
+d0 = data.table::fread('Data/alldat.csv')
+codebook = d0[!duplicated(d0$`Indicator Code`),5:7]
+#data.table::fwrite(codebook, 'Data/codebook.csv')
 
-See the front matter of this document for examples. You are recommended
-to conform your choice to the journal you are submitting to.
+d1 = d0 %>% 
+  select(`Country Name`, `Country Code`, `Country WHO Region`, `Country Income Group`, 
+         `Indicator Code`, Year, Value) %>% 
+  spread(`Indicator Code`, Value) %>% 
+  select(c(1:ncol(.))[colSums(is.na(.)) < 500])
 
-```{r message=FALSE, warning=FALSE}
-require(tidyverse)
+var_sel = names(d1)
+codebook1 = codebook[codebook$`Indicator Code` %in% names(d1),]
+#data.table::fwrite(codebook1, 'Data/codebook1.csv')
 
-csv_files = list.files('Data/UHC_CSV', pattern = '.csv$')
+life = data.table::fread('Data/life-expectancy-who/Life Expectancy Data.csv')
+f0 = d1[life, on = c(`Country Name` = 'Country', Year = 'Year')]
+data.table::fwrite(f0, 'Data/f0.csv')
+```
 
-for (i in csv_files){
-  assign(gsub(".csv", "", i),
-         readr::read_csv(paste0('Data/UHC_CSV/', i)))
-}
+
+```{r eval=FALSE}
+pacman::p_load(tidyverse)
+f0 = readr::read_csv('Data/f0.csv')
+
+# adjusting legend alpha:
+# https://stackoverflow.com/questions/40944239/removing-ggplot2-legend-removes-whole-data-from-the-plot
+
+windowsFonts(Times=windowsFont("Times New Roman"))
+f0 %>% 
+  filter(!is.na(`Country Income Group`)) %>% 
+  mutate(`Country Income Group` = ifelse(`Country Income Group` == 'Hi',
+                                         'High', `Country Income Group`)) %>% 
+  mutate(`Country Income Group` = factor(`Country Income Group`, 
+                                         levels = c('Low', 'Low-Mid', 'Up-Mid', 'High'))) %>%
+  ggplot(aes(x = Year, y = `Life expectancy`,
+             group = `Country Name`, color = `Country Income Group`)) + 
+  geom_line(alpha = 0.5, size = 0.4) +
+  theme_bw() + ylab('Life expectancy in each country') +
+  scale_x_continuous("Year", labels = as.character(2000:2015), breaks = 2000:2015)+
+  theme(legend.justification = c(1, 1), legend.position = c(0.6, 0.1),
+        legend.background = element_rect(fill=alpha('white', 0.8)),
+        legend.direction="horizontal", text=element_text(family="Times"))+ 
+  guides(color=guide_legend(title="Income group", 
+                            override.aes = list(alpha = 1, size = 2)))
+# Country Income Group, Country WHO Region
+ggsave('Figures/fig1.pdf', width = 10, height = 6.18)
 
 ```
 
+```{r fig1}
+knitr::include_graphics('Figures/fig1.pdf')
+```
+
+
+
 ```{r eval=FALSE}
-pacman::p_load(tidyverse, tidyr)
-wbank = read.csv('Data/d8871a79-5272-4d42-9039-d8522d2b12ea_Data.csv', na.strings = '..')
+pacman::p_load(rstanarm)
+f0 = readr::read_csv('Data/f0.csv')
+names(f0)=c('CountryName', 'CountryCode', 'WHORegion', 'IncomeGroup', 'Year', "CFACHE_SHA2011", "CHEGDP_SHA2011", "CHE_pc_PPP_SHA2011", "CHE_pc_US_SHA2011", "CHICHE_SHA2011", "DOMCHE_SHA2011", "GFACHE_SHA2011", "GGHEDCHE_SHA2011", "GGHEDGDP_SHA2011", "GGHEDGGE_SHA2011", "GGHED_pc_PPP_SHA2011", "GGHED_pc_US_SHA2011", "OOP_pc_PPP_SHA2011", "OOP_pc_US_SHA2011", "OOPSCHE_SHA2011", "OTHERCHE_SHA2011", "PVTDCHE_SHA2011", "PVTD_pc_PPP_SHA2011", "PVTD_pc_US_SHA2011", "sha11FS", "sha11FS1", "sha11FS11", "sha11FS5", "sha11FS6", "sha11FS61", "sha11HF", "sha11HF1", "sha11HF11", "sha11HF2", "sha11HF21", "sha11HF3", "VFACHE_SHA2011", "VHICHE_SHA2011", "Status", "Lifeexpectancy", "AdultMortality", "infantdeaths", "Alcohol", "percentageexpenditure", "HepatitisB", "Measles", "BMI", "underfivedeaths", "Polio", "Totalexpenditure", "Diphtheria", "HIVAIDS", "GDP", "Population", "thinness119", "thinness59", "IncomeComp", "Schooling")
 
-d1 = wbank %>% 
-  select(country = Country.Name, countrycode = Country.Code, 
-         var_name = Series.Name,  var_code = Series.Code, everything()) %>% 
-  select(-countrycode, - var_name)
+fit0 = stan_glmer(
+  Lifeexpectancy ~ 1 + sha11HF1 + sha11HF11 + (1+Year|CountryName) + (1|IncomeGroup), 
+  data = f0, seed = 1,
+  chains = 1, cores = 1, warmup = 1500, iter = 3000)
 
-dlong = d1 %>% 
-  gather(key = 'year', value = 'value', -country, -var_code) %>% 
-  na.omit() %>% 
-  mutate(year = as.integer(substr(year, 2, 5)))
 
-count(dlong, year)
+broom::tidy(fit0, intervals = TRUE, prob = 0.95)
+#broom::glance(fit0, looic = TRUE)
 ```
 
 
@@ -142,8 +196,9 @@ whenever available.
 
 Here are two sample references: 
 
+
 Discussion
 ==========
 
-References {#references .unnumbered}
+References {-}
 ==========
