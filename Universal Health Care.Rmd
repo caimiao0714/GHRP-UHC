@@ -1,17 +1,20 @@
 ---
-title: Looking at the effect of primary care investment on life expectency in different economic strata of countries
+title: "Association between Primary Care Investment and Life Expectency in 193 Countries: A Retrospective Longitudinal Study"
 subtitle: 
 author:
   - name: Miao Cai
     email: miao.cai@slu.edu
     affiliation: SLU
+  - name: Asabe Garba
+    email: asabe.garba@slu.edu
+    affiliation: SLU
+  - name: Xin Li
+    email: xl60@iu.edu
+    affiliation: WHU
   - name: Xiaojun Lin
     email: xjlin@hust.edu.cn
     affiliation: SCU
     footnote: Corresponding Author
-  - name: Xin Li
-    email: xl60@iu.edu
-    affiliation: WHU
 address:
   - code: SLU
     address: Saint Louis University, Saint Louis, MO, 63108
@@ -28,7 +31,7 @@ output:
     base_format: rticles::elsevier_article
 link-citations: true
 linkcolor: blue
-geometry: "left=2cm,right=2cm,top=2cm,bottom=2cm"
+geometry: "left=3cm,right=3cm,top=3cm,bottom=3cm"
 fig_caption: yes
 indent: true
 link-citation: true
@@ -39,6 +42,7 @@ header-includes:
   - \usepackage{float}
   - \usepackage{booktabs}
   - \usepackage{lscape}
+  - \usepackage{setspace}
 abstract: |
   This is the abstract.
 
@@ -47,14 +51,21 @@ abstract: |
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, eval=FALSE)
 ```
 
 \newcommand{\blandscape}{\begin{landscape}}
 \newcommand{\elandscape}{\end{landscape}}
+\doublespacing
 
 Introduction
 ============
+
+\hl{government health expenditure and life expectancy.}
+
+[@wagstaff2018progress].
+
+# Special issue information
 
 Universal health coverage (UHC) is one of the key approaches in achieving the 2030 Agenda for Sustainable Development Goals (SDGs). On October 25-26, 2018, the Global Conference on Primary Health Care was held in Kazakhstan, and the Declaration of Astana was signed by 197 Member States under the leadership of the World Health Organization (WHO). In this Declaration, strengthening primary health care system has been considered as an essential step towards achieving Universal Health Coverage.
 
@@ -72,10 +83,11 @@ This thematic series of articles is being launched by the Global Health Research
 
 This thematic series will be guest edited by Dr. Beibei Yuan (beibeiyuan@bjmu.edu.cn), Associate Professor from Peking University and Dr. Lanting Lu (lanting.lu@ruc.edu.cn), Associate Professor from Renmin University of China.
 
-Submissions from anywhere in the world are welcome. Authors are advised to select the Thematic Series option "Universal Health Coverage" during their submission. The deadline of submission is on April 15, 2019.  
+Submissions from anywhere in the world are welcome. Authors are advised to select the Thematic Series option "Universal Health Coverage" during their submission. The deadline of submission is on **April 14, 2019**.  
 
 
-This is an introduction [@wagstaff2018progress].
+
+
 
 Methods
 =======
@@ -111,7 +123,7 @@ Statistical Analyses
 
 
 ```{r eval=FALSE}
-pacman::p_load(tidyverse)
+pacman::p_load(tidyverse, tidyr)
 #d1 = rio::import('Data/AllData.xlsx')
 #data.table::fwrite(d1, 'Data/alldat.csv')
 d0 = data.table::fread('Data/alldat.csv')
@@ -163,38 +175,89 @@ ggsave('Figures/fig1.pdf', width = 10, height = 6.18)
 
 ```
 
-```{r fig1}
+```{r fig1, eval=TRUE,fig.cap='Life expectancy in different countries from 2000 to 2015'}
 knitr::include_graphics('Figures/fig1.pdf')
 ```
 
 
 
 ```{r eval=FALSE}
-pacman::p_load(rstanarm)
-f0 = readr::read_csv('Data/f0.csv')
-names(f0)=c('CountryName', 'CountryCode', 'WHORegion', 'IncomeGroup', 'Year', "CFACHE_SHA2011", "CHEGDP_SHA2011", "CHE_pc_PPP_SHA2011", "CHE_pc_US_SHA2011", "CHICHE_SHA2011", "DOMCHE_SHA2011", "GFACHE_SHA2011", "GGHEDCHE_SHA2011", "GGHEDGDP_SHA2011", "GGHEDGGE_SHA2011", "GGHED_pc_PPP_SHA2011", "GGHED_pc_US_SHA2011", "OOP_pc_PPP_SHA2011", "OOP_pc_US_SHA2011", "OOPSCHE_SHA2011", "OTHERCHE_SHA2011", "PVTDCHE_SHA2011", "PVTD_pc_PPP_SHA2011", "PVTD_pc_US_SHA2011", "sha11FS", "sha11FS1", "sha11FS11", "sha11FS5", "sha11FS6", "sha11FS61", "sha11HF", "sha11HF1", "sha11HF11", "sha11HF2", "sha11HF21", "sha11HF3", "VFACHE_SHA2011", "VHICHE_SHA2011", "Status", "Lifeexpectancy", "AdultMortality", "infantdeaths", "Alcohol", "percentageexpenditure", "HepatitisB", "Measles", "BMI", "underfivedeaths", "Polio", "Totalexpenditure", "Diphtheria", "HIVAIDS", "GDP", "Population", "thinness119", "thinness59", "IncomeComp", "Schooling")
+pacman::p_load(tidyverse)
+f0 = data.table::fread('Data/f0.csv')
+names(f0)=c('CountryName', 'CountryCode', 'WHORegion', 'Country Income Group', 'Year', "CFACHE_SHA2011", "CHEGDP_SHA2011", "CHE_pc_PPP_SHA2011", "CHE_pc_US_SHA2011", "CHICHE_SHA2011", "DOMCHE_SHA2011", "GFACHE_SHA2011", "GGHEDCHE_SHA2011", "GGHEDGDP_SHA2011", "GGHEDGGE_SHA2011", "GGHED_pc_PPP_SHA2011", "GGHED_pc_US_SHA2011", "OOP_pc_PPP_SHA2011", "OOP_pc_US_SHA2011", "OOPSCHE_SHA2011", "OTHERCHE_SHA2011", "PVTDCHE_SHA2011", "PVTD_pc_PPP_SHA2011", "PVTD_pc_US_SHA2011", "sha11FS", "sha11FS1", "sha11FS11", "sha11FS5", "sha11FS6", "sha11FS61", "sha11HF", "sha11HF1", "sha11HF11", "sha11HF2", "sha11HF21", "sha11HF3", "VFACHE_SHA2011", "VHICHE_SHA2011", "Status", "Lifeexpectancy", "AdultMortality", "infantdeaths", "Alcohol", "percentageexpenditure", "HepatitisB", "Measles", "BMI", "underfivedeaths", "Polio", "Totalexpenditure", "Diphtheria", "HIVAIDS", "GDP", "Population", "thinness119", "thinness59", "IncomeComp", "Schooling")
+```
 
-fit0 = stan_glmer(
-  Lifeexpectancy ~ 1 + sha11HF1 + sha11HF11 + (1+Year|CountryName) + (1|IncomeGroup), 
-  data = f0, seed = 1,
-  chains = 1, cores = 1, warmup = 1500, iter = 3000)
+'CountryName', 'CountryCode', 'WHORegion', 'IncomeGroup', 'Year', "CFACHE_SHA2011", "CHEGDP_SHA2011", "CHE_pc_PPP_SHA2011", "CHE_pc_US_SHA2011", "CHICHE_SHA2011", "DOMCHE_SHA2011", "GFACHE_SHA2011", "GGHEDCHE_SHA2011", "GGHEDGDP_SHA2011", "GGHEDGGE_SHA2011", "GGHED_pc_PPP_SHA2011", "GGHED_pc_US_SHA2011", "OOP_pc_PPP_SHA2011", "OOP_pc_US_SHA2011", "OOPSCHE_SHA2011", "OTHERCHE_SHA2011", "PVTDCHE_SHA2011", "PVTD_pc_PPP_SHA2011", "PVTD_pc_US_SHA2011", "sha11FS", "sha11FS1", "sha11FS11", "sha11FS5", "sha11FS6", "sha11FS61", "sha11HF", "sha11HF1", "sha11HF11", "sha11HF2", "sha11HF21", "sha11HF3", "VFACHE_SHA2011", "VHICHE_SHA2011", "Status", "Lifeexpectancy", "AdultMortality", "infantdeaths", "Alcohol", "percentageexpenditure", "HepatitisB", "Measles", "BMI", "underfivedeaths", "Polio", "Totalexpenditure", "Diphtheria", "HIVAIDS", "GDP", "Population", "thinness119", "thinness59", "IncomeComp", "Schooling"
+
+- Current Health Expenditure (CHE) as % GDP: CHEGDP_SHA2011
+
+- Government Health Expenditure (GGHE-D) as % CHE: GGHEDCHE_SHA2011
+- Domestic Private Health Expenditure (PVT-D) as % CHE: PVTDCHE_SHA2011
+- Government Health Expenditure (GGHE-D) as % GDP: GGHEDGDP_SHA2011
+
+- Compulsory Financing Arrangements (CFA) as % of CHE: CFACHE_SHA2011
+DELETE- Government Financing Arrangements (GFA) as % of CHE:	GFACHE_SHA2011
+- Compulsory Health Insurance (CHI) as % of (CHE): CHICHE_SHA2011
+- OOP % CHE: OOPSCHE_SHA2011
+
+Multi-collinearity
+
+CFACHE_SHA2011 
+GFACHE_SHA2011
+CHICHE_SHA2011
+
+```{r}
+fit00 = lm(
+  Lifeexpectancy ~  CHEGDP_SHA2011 + GGHEDCHE_SHA2011 + PVTDCHE_SHA2011 + 
+    GGHEDGDP_SHA2011 + CFACHE_SHA2011 + GFACHE_SHA2011 + CHICHE_SHA2011 + 
+    OOPSCHE_SHA2011 + Year + IncomeGroup, 
+  data = f1)
+broom::tidy(fit00)
+#summary(fit00)
+```
+
+```{r}
+#f1 = f0[f0$CHICHE_SHA2011 != 0&!is.na(f0$CHICHE_SHA2011),]
+f1 = f0 %>% 
+  select(`Country Income Group`, Lifeexpectancy,  CHEGDP_SHA2011, GGHEDCHE_SHA2011,
+         PVTDCHE_SHA2011, CountryName, GGHEDGDP_SHA2011, CFACHE_SHA2011, 
+         GFACHE_SHA2011, CHICHE_SHA2011, OOPSCHE_SHA2011, Year) %>% 
+  na.omit()
+data.table::fwrite(f1, 'Data/f1.csv')
 
 
-broom::tidy(fit0, intervals = TRUE, prob = 0.95)
-#broom::glance(fit0, looic = TRUE)
+fit01 = lm(
+  Lifeexpectancy ~  CHEGDP_SHA2011 + GGHEDCHE_SHA2011 + PVTDCHE_SHA2011 + 
+    GGHEDGDP_SHA2011 + CFACHE_SHA2011 + CHICHE_SHA2011 + 
+    OOPSCHE_SHA2011 + Year + `Country Income Group`, 
+  data = f1)
+broom::tidy(fit01)
+#summary(fit01)
+
+
+```
+
+
+CFACHE_SHA2011 
+GFACHE_SHA2011
+CHICHE_SHA2011
+
+```{r}
+# fit0 = stan_glmer(
+#   Lifeexpectancy ~ 1 + sha11HF1 + sha11HF11 + (1+Year|CountryName) + (1|IncomeGroup), 
+#   data = f0, seed = 1,
+#   chains = 1, cores = 1, warmup = 1500, iter = 3000)
+
+
+# broom::tidy(fit0, intervals = TRUE, prob = 0.95)
+# broom::glance(fit0, looic = TRUE)
 ```
 
 
 Results
 =======
 
-There are various bibliography styles available. You can select the
-style of your choice in the preamble of this document. These styles are
-Elsevier styles based on standard styles like Harvard and Vancouver.
-Please use BibTeX to generate your bibliography and include DOIs
-whenever available.
 
-Here are two sample references: 
 
 
 Discussion

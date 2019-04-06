@@ -34,7 +34,7 @@
 \fi
 % use microtype if available
 \IfFileExists{microtype.sty}{\usepackage{microtype}}{}
-\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
 \usepackage{longtable}
 \usepackage{graphicx}
 % We will generate all images so they have a width \maxwidth. This means
@@ -56,7 +56,7 @@
 \hypersetup{breaklinks=true,
             bookmarks=true,
             pdfauthor={},
-            pdftitle={Looking at the effect of primary care investment on life expectency in different economic strata of countries},
+            pdftitle={Association between Primary Care Investment and Life Expectency in 193 Countries: A Retrospective Longitudinal Study},
             colorlinks=true,
             urlcolor=blue,
             linkcolor=blue,
@@ -71,22 +71,26 @@
 \usepackage{float}
 \usepackage{booktabs}
 \usepackage{lscape}
+\usepackage{setspace}
 
 
 
 \begin{document}
 \begin{frontmatter}
 
-  \title{Looking at the effect of primary care investment on life expectency in different economic strata of countries}
+  \title{Association between Primary Care Investment and Life Expectency in 193 Countries: A Retrospective Longitudinal Study}
     \author[SLU]{Miao Cai}
    \ead{miao.cai@slu.edu} 
+  
+    \author[SLU]{Asabe Garba}
+   \ead{asabe.garba@slu.edu} 
+  
+    \author[WHU]{Xin Li}
+   \ead{xl60@iu.edu} 
   
     \author[SCU]{Xiaojun Lin\corref{c1}}
    \ead{xjlin@hust.edu.cn} 
    \cortext[c1]{Corresponding Author}
-    \author[WHU]{Xin Li}
-   \ead{xl60@iu.edu} 
-  
       \address[SLU]{Saint Louis University, Saint Louis, MO, 63108}
     \address[SCU]{Sichuan University, Chengdu, Sichuan, China}
     \address[WHU]{Wuhan University, Wuhan, Hubei, China}
@@ -101,9 +105,17 @@
 
 \newcommand{\blandscape}{\begin{landscape}}
 \newcommand{\elandscape}{\end{landscape}}
+\doublespacing
 
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
+
+\hl{government health expenditure and life expectancy.}
+
+{[}\protect\hyperlink{ref-wagstaff2018progress}{1}{]}.
+
+\hypertarget{special-issue-information}{%
+\section{Special issue information}\label{special-issue-information}}
 
 Universal health coverage (UHC) is one of the key approaches in achieving the 2030 Agenda for Sustainable Development Goals (SDGs). On October 25-26, 2018, the Global Conference on Primary Health Care was held in Kazakhstan, and the Declaration of Astana was signed by 197 Member States under the leadership of the World Health Organization (WHO). In this Declaration, strengthening primary health care system has been considered as an essential step towards achieving Universal Health Coverage.
 
@@ -124,9 +136,7 @@ This thematic series of articles is being launched by the Global Health Research
 
 This thematic series will be guest edited by Dr.~Beibei Yuan (beibeiyuan@bjmu.edu.cn), Associate Professor from Peking University and Dr.~Lanting Lu (lanting.lu@ruc.edu.cn), Associate Professor from Renmin University of China.
 
-Submissions from anywhere in the world are welcome. Authors are advised to select the Thematic Series option ``Universal Health Coverage'' during their submission. The deadline of submission is on April 15, 2019.
-
-This is an introduction {[}\protect\hyperlink{ref-wagstaff2018progress}{1}{]}.
+Submissions from anywhere in the world are welcome. Authors are advised to select the Thematic Series option ``Universal Health Coverage'' during their submission. The deadline of submission is on \textbf{April 14, 2019}.
 
 \hypertarget{methods}{%
 \section{Methods}\label{methods}}
@@ -167,7 +177,11 @@ Continent level
 \hypertarget{statistical-analyses}{%
 \subsection{Statistical Analyses}\label{statistical-analyses}}
 
+\begin{figure}
+\centering
 \includegraphics{Figures/fig1.pdf}
+\caption{\label{fig:fig1}Life expectancy in different countries from 2000 to 2015}
+\end{figure}
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
