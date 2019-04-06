@@ -2,5 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
+Universal_Health_Care_cache/
 Data/*
 !Data/alldat.csv

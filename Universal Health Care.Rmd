@@ -1,5 +1,5 @@
 ---
-title: "Association between Primary Care Investment and Life Expectency in 193 Countries: A Retrospective Longitudinal Study"
+title: "Association between XXX and Life Expectency in 139 Countries: A Retrospective Longitudinal Study"
 subtitle: 
 author:
   - name: Miao Cai
@@ -43,6 +43,7 @@ header-includes:
   - \usepackage{booktabs}
   - \usepackage{lscape}
   - \usepackage{setspace}
+  - \usepackage{dcolumn}
 abstract: |
   This is the abstract.
 
@@ -51,7 +52,7 @@ abstract: |
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, eval=FALSE)
+knitr::opts_chunk$set(echo = FALSE, eval=FALSE, cache = TRUE, fig.pos = 'H')
 ```
 
 \newcommand{\blandscape}{\begin{landscape}}
@@ -95,31 +96,50 @@ Methods
 Data souce
 ----------
 
-- `Data/AllData.xlsx`: [WHO country level variables](http://apps.who.int/nha/database/Select/Indicators/en)
-- `Data/life-expectancy-who/Life Expectancy Data.csv`: [Life expectancy and mortality](https://www.kaggle.com/kumarajarshi/life-expectancy-who/data)
+We extracted country level data from the Global Health Expenditure Database on the World Health Organization (WHO) website.[@WHOdata] This database includes comparable health expenditure data for around 190 countries from 2000 to 2016. Besides, we downloaded Life expectancy data by country from the Global Health Observatory data repository provided by the WHO.[@WHOlife] 
 
-In an effort to promote reproducible research, we have created a public GitHub repository to store all the data and R code we use to write this paper. 
-Interested readers can find them at [https://github.com/caimiao0714/GHRP-UHC](https://github.com/caimiao0714/GHRP-UHC).
 
 Variable selection
 ------------------
 
 Outcome: life expectancy
 
-Independent variables:
+Independent variables: life expectancy
 
-Country level: 
+Variable selection:
 
-- CountryName (random intercept)
-- Current Health Expenditure (CHE) as % Gross Domestic Product (GDP): `CHEGDP_SHA2011`
-- 
+- Current Health Expenditure (CHE) as % GDP: CHEGDP_SHA2011
+- Government Health Expenditure (GGHE-D) as % GDP: GGHEDGDP_SHA2011
+- Domestic Private Health Expenditure (PVT-D) as % CHE: PVTDCHE_SHA2011
+- Compulsory Financing Arrangements (CFA) as % of CHE: CFACHE_SHA2011
+- OOP % CHE: OOPSCHE_SHA2011
+- Population 
+- GDP 
+- Year
 
-Continent level
+Multi-collinearity:
 
+CFACHE_SHA2011 - kept only
+GFACHE_SHA2011
+CHICHE_SHA2011
 
 Statistical Analyses
 --------------------
 
+
+Point and interval estimates (95% confidence intervals, 95% CI), as well as the p-values, were reported for all indepdent variables. A p-value less than 0.05 is viewed as statistically significant. All data cleaning, visualization, statistical modelling, and reporting were performed using R 3.5.3 [@R353]. In an effort to promote reproducible research, we have created a public GitHub repository to store all the data and R code we use to write this paper. 
+Interested readers can find them at [https://github.com/caimiao0714/GHRP-UHC](https://github.com/caimiao0714/GHRP-UHC).
+
+
+
+
+
+
+
+
+
+Results
+=======
 
 
 ```{r eval=FALSE}
@@ -152,7 +172,6 @@ f0 = readr::read_csv('Data/f0.csv')
 
 # adjusting legend alpha:
 # https://stackoverflow.com/questions/40944239/removing-ggplot2-legend-removes-whole-data-from-the-plot
-
 windowsFonts(Times=windowsFont("Times New Roman"))
 f0 %>% 
   filter(!is.na(`Country Income Group`)) %>% 
@@ -172,96 +191,120 @@ f0 %>%
                             override.aes = list(alpha = 1, size = 2)))
 # Country Income Group, Country WHO Region
 ggsave('Figures/fig1.pdf', width = 10, height = 6.18)
-
 ```
 
-```{r fig1, eval=TRUE,fig.cap='Life expectancy in different countries from 2000 to 2015'}
+```{r fig1, eval=TRUE,fig.cap='Life expectancy in 139 countries from 2000 to 2015'}
 knitr::include_graphics('Figures/fig1.pdf')
 ```
 
+Figure \@ref(fig:fig1)
 
 
-```{r eval=FALSE}
-pacman::p_load(tidyverse)
+
+```{r eval=TRUE}
+pacman::p_load(tidyverse, stargazer)
 f0 = data.table::fread('Data/f0.csv')
-names(f0)=c('CountryName', 'CountryCode', 'WHORegion', 'Country Income Group', 'Year', "CFACHE_SHA2011", "CHEGDP_SHA2011", "CHE_pc_PPP_SHA2011", "CHE_pc_US_SHA2011", "CHICHE_SHA2011", "DOMCHE_SHA2011", "GFACHE_SHA2011", "GGHEDCHE_SHA2011", "GGHEDGDP_SHA2011", "GGHEDGGE_SHA2011", "GGHED_pc_PPP_SHA2011", "GGHED_pc_US_SHA2011", "OOP_pc_PPP_SHA2011", "OOP_pc_US_SHA2011", "OOPSCHE_SHA2011", "OTHERCHE_SHA2011", "PVTDCHE_SHA2011", "PVTD_pc_PPP_SHA2011", "PVTD_pc_US_SHA2011", "sha11FS", "sha11FS1", "sha11FS11", "sha11FS5", "sha11FS6", "sha11FS61", "sha11HF", "sha11HF1", "sha11HF11", "sha11HF2", "sha11HF21", "sha11HF3", "VFACHE_SHA2011", "VHICHE_SHA2011", "Status", "Lifeexpectancy", "AdultMortality", "infantdeaths", "Alcohol", "percentageexpenditure", "HepatitisB", "Measles", "BMI", "underfivedeaths", "Polio", "Totalexpenditure", "Diphtheria", "HIVAIDS", "GDP", "Population", "thinness119", "thinness59", "IncomeComp", "Schooling")
-```
+names(f0)=c('CountryName', 'CountryCode', 'WHORegion', 'Country Income Group', 
+            'Year', "CFACHE_SHA2011", "CHEGDP_SHA2011", "CHE_pc_PPP_SHA2011",
+            "CHE_pc_US_SHA2011", "CHICHE_SHA2011", "DOMCHE_SHA2011", "GFACHE_SHA2011",
+            "GGHEDCHE_SHA2011", "GGHEDGDP_SHA2011", "GGHEDGGE_SHA2011",
+            "GGHED_pc_PPP_SHA2011", "GGHED_pc_US_SHA2011", "OOP_pc_PPP_SHA2011",
+            "OOP_pc_US_SHA2011", "OOPSCHE_SHA2011", "OTHERCHE_SHA2011", "PVTDCHE_SHA2011",
+            "PVTD_pc_PPP_SHA2011", "PVTD_pc_US_SHA2011", "sha11FS", "sha11FS1", 
+            "sha11FS11", "sha11FS5", "sha11FS6", "sha11FS61", "sha11HF", "sha11HF1",
+            "sha11HF11", "sha11HF2", "sha11HF21", "sha11HF3", "VFACHE_SHA2011",
+            "VHICHE_SHA2011", "Status", "Lifeexpectancy", "AdultMortality", "infantdeaths",
+            "Alcohol", "percentageexpenditure", "HepatitisB", "Measles", "BMI",
+            "underfivedeaths", "Polio", "Totalexpenditure", "Diphtheria", "HIVAIDS", 
+            "GDP", "Population", "thinness119", "thinness59", "IncomeComp", "Schooling")
 
-'CountryName', 'CountryCode', 'WHORegion', 'IncomeGroup', 'Year', "CFACHE_SHA2011", "CHEGDP_SHA2011", "CHE_pc_PPP_SHA2011", "CHE_pc_US_SHA2011", "CHICHE_SHA2011", "DOMCHE_SHA2011", "GFACHE_SHA2011", "GGHEDCHE_SHA2011", "GGHEDGDP_SHA2011", "GGHEDGGE_SHA2011", "GGHED_pc_PPP_SHA2011", "GGHED_pc_US_SHA2011", "OOP_pc_PPP_SHA2011", "OOP_pc_US_SHA2011", "OOPSCHE_SHA2011", "OTHERCHE_SHA2011", "PVTDCHE_SHA2011", "PVTD_pc_PPP_SHA2011", "PVTD_pc_US_SHA2011", "sha11FS", "sha11FS1", "sha11FS11", "sha11FS5", "sha11FS6", "sha11FS61", "sha11HF", "sha11HF1", "sha11HF11", "sha11HF2", "sha11HF21", "sha11HF3", "VFACHE_SHA2011", "VHICHE_SHA2011", "Status", "Lifeexpectancy", "AdultMortality", "infantdeaths", "Alcohol", "percentageexpenditure", "HepatitisB", "Measles", "BMI", "underfivedeaths", "Polio", "Totalexpenditure", "Diphtheria", "HIVAIDS", "GDP", "Population", "thinness119", "thinness59", "IncomeComp", "Schooling"
-
-- Current Health Expenditure (CHE) as % GDP: CHEGDP_SHA2011
-
-- Government Health Expenditure (GGHE-D) as % CHE: GGHEDCHE_SHA2011
-- Domestic Private Health Expenditure (PVT-D) as % CHE: PVTDCHE_SHA2011
-- Government Health Expenditure (GGHE-D) as % GDP: GGHEDGDP_SHA2011
-
-- Compulsory Financing Arrangements (CFA) as % of CHE: CFACHE_SHA2011
-DELETE- Government Financing Arrangements (GFA) as % of CHE:	GFACHE_SHA2011
-- Compulsory Health Insurance (CHI) as % of (CHE): CHICHE_SHA2011
-- OOP % CHE: OOPSCHE_SHA2011
-
-Multi-collinearity
-
-CFACHE_SHA2011 
-GFACHE_SHA2011
-CHICHE_SHA2011
-
-```{r}
-fit00 = lm(
-  Lifeexpectancy ~  CHEGDP_SHA2011 + GGHEDCHE_SHA2011 + PVTDCHE_SHA2011 + 
-    GGHEDGDP_SHA2011 + CFACHE_SHA2011 + GFACHE_SHA2011 + CHICHE_SHA2011 + 
-    OOPSCHE_SHA2011 + Year + IncomeGroup, 
-  data = f1)
-broom::tidy(fit00)
-#summary(fit00)
-```
-
-```{r}
 #f1 = f0[f0$CHICHE_SHA2011 != 0&!is.na(f0$CHICHE_SHA2011),]
 f1 = f0 %>% 
-  select(`Country Income Group`, Lifeexpectancy,  CHEGDP_SHA2011, GGHEDCHE_SHA2011,
-         PVTDCHE_SHA2011, CountryName, GGHEDGDP_SHA2011, CFACHE_SHA2011, 
-         GFACHE_SHA2011, CHICHE_SHA2011, OOPSCHE_SHA2011, Year) %>% 
-  na.omit()
+  select(CountryName, Lifeexpectancy, CHEGDP_SHA2011, GGHEDGDP_SHA2011, PVTDCHE_SHA2011,
+    CFACHE_SHA2011, OOPSCHE_SHA2011, Population, GDP, Year, `Country Income Group`) %>% 
+  mutate(Population = Population/1000000,
+         GDP = GDP/1000) %>% 
+  na.omit() %>% 
+  data.table::data.table()
 data.table::fwrite(f1, 'Data/f1.csv')
 
-
+options(scipen = 999)
 fit01 = lm(
-  Lifeexpectancy ~  CHEGDP_SHA2011 + GGHEDCHE_SHA2011 + PVTDCHE_SHA2011 + 
-    GGHEDGDP_SHA2011 + CFACHE_SHA2011 + CHICHE_SHA2011 + 
-    OOPSCHE_SHA2011 + Year + `Country Income Group`, 
+  Lifeexpectancy ~ CHEGDP_SHA2011 + GGHEDGDP_SHA2011 + PVTDCHE_SHA2011 +
+    CFACHE_SHA2011 + OOPSCHE_SHA2011 + Population + GDP + Year + `Country Income Group`, 
   data = f1)
-broom::tidy(fit01)
-#summary(fit01)
 
-
+fit_hi = lm(Lifeexpectancy ~  CHEGDP_SHA2011 + GGHEDGDP_SHA2011 + PVTDCHE_SHA2011 + 
+             CFACHE_SHA2011 + OOPSCHE_SHA2011 + Population + GDP + Year, 
+           data = f1[f1$`Country Income Group` == 'Hi',])
+fit_upmid = lm(Lifeexpectancy ~  CHEGDP_SHA2011 + GGHEDGDP_SHA2011 + PVTDCHE_SHA2011 + 
+             CFACHE_SHA2011 + OOPSCHE_SHA2011 + Population + GDP + Year, 
+           data = f1[f1$`Country Income Group` == 'Up-Mid',])
+fit_lowmid = lm(Lifeexpectancy ~  CHEGDP_SHA2011 + GGHEDGDP_SHA2011 + PVTDCHE_SHA2011 + 
+             CFACHE_SHA2011 + OOPSCHE_SHA2011 + Population + GDP + Year, 
+           data = f1[f1$`Country Income Group` == 'Low-Mid',])
+fit_low = lm(Lifeexpectancy ~  CHEGDP_SHA2011 + GGHEDGDP_SHA2011 + PVTDCHE_SHA2011 + 
+             CFACHE_SHA2011 + OOPSCHE_SHA2011 + Population + GDP + Year, 
+           data = f1[f1$`Country Income Group` == 'Low',])
 ```
 
-
-CFACHE_SHA2011 
-GFACHE_SHA2011
-CHICHE_SHA2011
+\hl{Xiaojun Lin, create the Table 1 for f1. write results for Table 1, 2, 3 and Figure 1.}
 
 ```{r}
-# fit0 = stan_glmer(
-#   Lifeexpectancy ~ 1 + sha11HF1 + sha11HF11 + (1+Year|CountryName) + (1|IncomeGroup), 
-#   data = f0, seed = 1,
-#   chains = 1, cores = 1, warmup = 1500, iter = 3000)
-
-
-# broom::tidy(fit0, intervals = TRUE, prob = 0.95)
-# broom::glance(fit0, looic = TRUE)
+# NEED A TABLE 1 for HERE for f1
+f1 = data.table::fread('Data/f1.csv')
 ```
 
 
-Results
-=======
 
+```{r results='asis', eval=TRUE}
+stargazer(fit01, dep.var.labels=c("Life expectancy"), label = 'poolOLS',
+          title="OLS model predicting life expectancies in 139 countries from 2000 to 2015",
+covariate.labels=c(
+  "Current Health Expenditure as percent of GDP",
+  "Government Health Expenditure as percent of GDP", 
+  "Private Health Expenditure as percent CHE",
+  "Compulsory Financing Arrangements as percent of CHE",
+  "Out-of-pocket payment as percent of CHE", 
+  "Population (millions)", "GDP","Year", 
+  "Low income country", "Low to middle income country", 
+  "Up to middel income country", "Constant"),
+  omit.stat=c("LL","ser","f"), ci=TRUE, ci.level=0.95, 
+  single.row=FALSE, header=FALSE, 
+  notes = c("CHE: Current Health Expenditure,", 
+           "GDP: Gross Domestic Product",
+           "GHE: Government Health Expenditure",
+           "PVT-D: Private Health Expenditure",
+           "OOP: Out-of-pocket payment",
+           "CFA: Compulsory Financing Arrangements"),
+  notes.append = TRUE, notes.align = 'l')
+```
 
+Table \@ref(poolOLS) demonstrates XXXXXXX.
 
+\blandscape
+```{r results='asis', eval=TRUE}
+stargazer(fit_low, fit_lowmid, fit_upmid, fit_hi, label = 'stratifiedOLS',
+          dep.var.labels=c("Life expectancy"),
+          title="OLS model predicting life expectancies from 2000 to 2015 stratifeid by country income categories", align=TRUE, 
+          covariate.labels=c(
+  "Current Health Expenditure as percent of GDP",
+  "Government Health Expenditure as percent of GDP", 
+  "Private Health Expenditure as percent CHE",
+  "Compulsory Financing Arrangements as percent of CHE",
+  "Out-of-pocket payment as percent of CHE", 
+  "Population (millions)", "GDP","Year", "Constant"),
+          column.labels=c("Low","Low-mid", "Up-mid", "High"),
+          omit.stat=c("LL","ser","f"), ci=TRUE, single.row=FALSE, header=FALSE)
+```
+\elandscape
+
+Table \@ref(stratifiedOLS) presents XXXXXXX.
 
 Discussion
 ==========
+
+
 
 References {-}
 ==========
