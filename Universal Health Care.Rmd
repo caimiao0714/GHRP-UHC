@@ -1,5 +1,5 @@
 ---
-title: "Association between XXX and Life Expectency in 139 Countries: A Retrospective Longitudinal Study"
+title: "Association between compulsory health insurance and life expectency in 184 countries: A retrospective longitudinal study"
 subtitle: 
 author:
   - name: Miao Cai
@@ -15,13 +15,16 @@ author:
     email: xjlin@hust.edu.cn
     affiliation: SCU
     footnote: Corresponding Author
+  - name: Ziqi Peng
+    email: ziqi.peng@slu.edu
+    affiliation: SLU
 address:
   - code: SLU
-    address: Saint Louis University, Saint Louis, MO, 63108
+    address: College for Public Health and Social Justice, Saint Louis University, Saint Louis, MO, 63108
   - code: SCU
-    address: Sichuan University, Chengdu, Sichuan, China
+    address: West China School of Public Health, Sichuan University, Chengdu, Sichuan, China, 610044
   - code: WHU
-    address: Wuhan University, Wuhan, Hubei, China
+    address: School of Information Management, Wuhan University, Wuhan, Hubei, China, 430072
 journal: "Global Health Research and Policy - Thematic Series: Universal Health Coverage"
 date: "`r Sys.Date()`"
 bibliography: ref.bib
@@ -52,7 +55,7 @@ abstract: |
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, eval=FALSE, cache = TRUE, fig.pos = 'H')
+knitr::opts_chunk$set(echo = FALSE, eval=FALSE, cache = FALSE, fig.pos = 'H')
 ```
 
 \newcommand{\blandscape}{\begin{landscape}}
@@ -66,25 +69,7 @@ Introduction
 
 [@wagstaff2018progress].
 
-# Special issue information
-
-Universal health coverage (UHC) is one of the key approaches in achieving the 2030 Agenda for Sustainable Development Goals (SDGs). On October 25-26, 2018, the Global Conference on Primary Health Care was held in Kazakhstan, and the Declaration of Astana was signed by 197 Member States under the leadership of the World Health Organization (WHO). In this Declaration, strengthening primary health care system has been considered as an essential step towards achieving Universal Health Coverage.
-
-This thematic series of articles is being launched by the Global Health Research and Policy (GHRP) to serve as a platform to disseminate current research findings, insights, new perspectives, and policy recommendations in promoting UHC worldwide. This will serve to create better knowledge transfer from researches to policy-making and practices and for information and experience sharing. GHRP is encouraging submissions of commentaries, reviews, research articles, and short report of policies on the key elements of UHC. Elements that can be covered in the submissions may include, but not limited to the following:
-
-- Health financing system strengthening, with special focus on the development of health financial protection schemes for the disadvantaged population, as well as the integration of different insurance programs.
-
-- Primary healthcare system strengthening, with special focus on health workforce and delivery network of primary health care services, equity and quality of primary health care, information systems construction, etc.
-
-- People-centered health care system, with special focus on the integration of specialist healthcare services and primary health care, and the provision of continuous services to improve patient experience, etc.
-
-- Essential medicines and health products, with special focus on strategic purchasing, relevant mechanism designs and market entry for insurance benefit package.
-
-- Medical assistance programs for poverty alleviation as an approach to increase UHC.
-
-This thematic series will be guest edited by Dr. Beibei Yuan (beibeiyuan@bjmu.edu.cn), Associate Professor from Peking University and Dr. Lanting Lu (lanting.lu@ruc.edu.cn), Associate Professor from Renmin University of China.
-
-Submissions from anywhere in the world are welcome. Authors are advised to select the Thematic Series option "Universal Health Coverage" during their submission. The deadline of submission is on **April 14, 2019**.  
+ 
 
 
 
@@ -93,56 +78,51 @@ Submissions from anywhere in the world are welcome. Authors are advised to selec
 Methods
 =======
 
-Data souce
+Data source
 ----------
+We extracted country level data from the Global Health Expenditure Database on the World Health Organization (WHO) website [@WHOdata]. 
+This database provides detailed comparable health expenditure data in around 190 countries from 2000 to 2016. 
+These health expenditure variables include current health expenditure (CHE) decomposition: domestic government health expenditure, private health expenditure, and out-of-pocket (OOP) payment as percent of CHE; 
+financing arrangements decomposition: compulsory financing arrangements, government financing arrangements, compulsory health insurance, household OOP payment as percent of CHE; CHE and government health expenditure as percent of gross domestic product (GDP).
 
-We extracted country level data from the Global Health Expenditure Database on the World Health Organization (WHO) website.[@WHOdata] This database includes comparable health expenditure data for around 190 countries from 2000 to 2016. Besides, we downloaded Life expectancy data by country from the Global Health Observatory data repository provided by the WHO.[@WHOlife] 
+The Global Health Observatory data repository by the WHO provides global health priority data by country in multiple years [@worldbank]. 
+We obtained life expectancy, GDP, and population data in provided countries from 2000 to 2016.
+Both databases are publicly available, with downloadable comma-separated values or Microsoft Excel files provided on the WHO website. 
+The two databases were then merged according to two common keys, country name and year.
 
 
 Variable selection
 ------------------
+The outcome variable in this study was the life expectancy at birth in a country in a specific year. 
+It reflects the overll mortality level of all age groups in a country in a given year. 
+Life expectancy is one of the most widely used measure of mortality and burden of disease in previous literature [@lee2012effect; @salomon2012healthy; @bennett2015future; @mathers2015causes].
 
-Outcome: life expectancy
+We used four sets of explanatory variables to predict life expectancy. 
+Country level general characteristics include population (in millions), year (2000 to 2015), and GDP (in billions). 
+The GDP data were reported in constant 2010 prices, which were adjusted for the effects of price inflation [@worldbankconstant]. 
+Current health expenditure (CHE) and government health expenditure (GGHE-D) as percent of GDP were used to account for the investment in healthcare in a country.
+Compulsory financing arrangements and compulsory health insurance as percent of the CHE were two major sources of public financing arrangements.
+Private health expenditure and OOP payment as percent of the CHE were two sources healthcare expenditure.
 
-Independent variables: life expectancy
-
-Variable selection:
-
-- Current Health Expenditure (CHE) as % GDP: CHEGDP_SHA2011
-- Government Health Expenditure (GGHE-D) as % GDP: GGHEDGDP_SHA2011
-- Domestic Private Health Expenditure (PVT-D) as % CHE: PVTDCHE_SHA2011
-- Compulsory Financing Arrangements (CFA) as % of CHE: CFACHE_SHA2011
-- OOP % CHE: OOPSCHE_SHA2011
-- Population 
-- GDP 
-- Year
-
-Multi-collinearity:
-
-CFACHE_SHA2011 - kept only
-GFACHE_SHA2011
-CHICHE_SHA2011
 
 Statistical Analyses
 --------------------
+We excluded observations with missing data in either the dependent variable or any of the explanatory variables (n = 294), which resulted in 2,975 complete observations (91% of the original data) from 184 countries. 
 
+A pooled ordinary least square model were used to estimate the association between compulsory health insurance and life expectancy among the 183 countries. Since high and low income countries were characterized by different patterns of life expectancy and health financing schemes, we further conducted stratified analyses among the four income category countries to allow for potentially different patterns of association.
 
-Point and interval estimates (95% confidence intervals, 95% CI), as well as the p-values, were reported for all indepdent variables. A p-value less than 0.05 is viewed as statistically significant. All data cleaning, visualization, statistical modelling, and reporting were performed using R 3.5.3 [@R353]. In an effort to promote reproducible research, we have created a public GitHub repository to store all the data and R code we use to write this paper. 
+Point and interval estimates (95% confidence intervals, 95% CI), as well as the p-values, were reported for all independent variables. 
+A p-value less than 0.05 is viewed as statistically significant. 
+All data cleaning, visualization, statistical modelling, and reporting were performed using R 3.5.3 [@R353]. 
+In an effort to promote reproducible research, we have created a public GitHub repository to store all the data and R code we use to write this paper. 
 Interested readers can find them at [https://github.com/caimiao0714/GHRP-UHC](https://github.com/caimiao0714/GHRP-UHC).
-
-
-
-
-
-
-
 
 
 Results
 =======
 
 
-```{r eval=FALSE}
+```{r DataClean, eval=FALSE}
 pacman::p_load(tidyverse, tidyr)
 #d1 = rio::import('Data/AllData.xlsx')
 #data.table::fwrite(d1, 'Data/alldat.csv')
@@ -160,31 +140,83 @@ var_sel = names(d1)
 codebook1 = codebook[codebook$`Indicator Code` %in% names(d1),]
 #data.table::fwrite(codebook1, 'Data/codebook1.csv')
 
-life = data.table::fread('Data/life-expectancy-who/Life Expectancy Data.csv')
-f0 = d1[life, on = c(`Country Name` = 'Country', Year = 'Year')]
-data.table::fwrite(f0, 'Data/f0.csv')
+# Population, downloaded at:
+# https://databank.worldbank.org/data/reports.aspx?source=2&series=SP.POP.TOTL&country=#
+pop = data.table::fread('Data/Data_Extract_From_World_Development_Indicators_Population/7f9c04b7-9a7d-435b-878b-6c907d23db48_Data.csv')
+pop = pop %>% 
+  select(-`Series Name`, -`Series Code`, -`2017 [YR2017]`, -`2018 [YR2018]`) %>% 
+  tidyr::gather(key = 'Year', value = 'Population', -`Country Name`, -`Country Code`) %>% 
+  select(-`Country Name`) %>% 
+  mutate(Year = as.integer(substr(Year, 1, 4)),
+         Population = as.numeric(Population))
+
+# GDP, downloaded at:
+# https://databank.worldbank.org/data/reports.aspx?source=2&series=NY.GDP.MKTP.KD&country=#
+GDP = data.table::fread('Data/Data_Extract_From_World_Development_Indicators_GDP/28edd75e-f579-4950-86eb-7846b8864683_Data.csv')
+GDP = GDP %>% 
+  select(-`Series Name`, -`Series Code`, -`2017 [YR2017]`, -`2018 [YR2018]`) %>% 
+  tidyr::gather(key = 'Year', value = 'GDP', -`Country Name`, -`Country Code`) %>% 
+  select(-`Country Name`) %>% 
+  mutate(Year = as.integer(substr(Year, 1, 4)),
+         GDP = as.numeric(GDP))
+
+# Life expectancy
+# https://databank.worldbank.org/data/reports.aspx?source=2&series=SP.DYN.LE00.IN&country=
+LE = data.table::fread('Data/Data_Extract_From_World_Development_Indicators_Life_expectancy/48b94b19-e0de-469c-a449-f4846b7033b0_Data.csv')
+LE = LE %>% 
+  select(-`Series Name`, -`Series Code`, -`2017 [YR2017]`, -`2018 [YR2018]`) %>% 
+  tidyr::gather(key = 'Year', value = 'Life expectancy', 
+                -`Country Name`, -`Country Code`) %>% 
+  select(-`Country Name`) %>% 
+  mutate(Year = as.integer(substr(Year, 1, 4)),
+         `Life expectancy` = as.numeric(`Life expectancy`))
+
+# Merge databases
+d2 = d1 %>% 
+  left_join(pop, by = c("Country Code" = 'Country Code', 'Year' = 'Year')) %>% 
+  left_join(GDP, by = c("Country Code" = 'Country Code', 'Year' = 'Year')) %>% 
+  left_join(LE, by = c("Country Code" = 'Country Code', 'Year' = 'Year'))
+
+names(d2) = names(d2) %>% 
+  gsub("%", "", .) %>% 
+  gsub("\\$", "", .) %>% 
+  gsub(" ", "", .) %>% 
+  gsub("-", "_", .) %>% 
+  gsub("\\.", "", .)
+
+f1 = d2 %>% 
+  select(CountryName, Lifeexpectancy, CHEGDP_SHA2011, GGHE_DGDP_SHA2011, 
+         PVT_DCHE_SHA2011, OOPSCHE_SHA2011, CFACHE_SHA2011, CHICHE_SHA2011, 
+         Population, GDP, Year, CountryIncomeGroup) %>% 
+  mutate(Population = Population/1000000,
+         GDP = GDP/10000000000) %>% 
+  na.omit() %>% 
+  data.table::data.table()
+data.table::fwrite(f1, 'Data/f1.csv')
 ```
 
 
-```{r eval=FALSE}
+
+
+```{r CreateFig1, eval=FALSE}
 pacman::p_load(tidyverse)
-f0 = readr::read_csv('Data/f0.csv')
+f1 = readr::read_csv('Data/f1.csv')
 
 # adjusting legend alpha:
 # https://stackoverflow.com/questions/40944239/removing-ggplot2-legend-removes-whole-data-from-the-plot
 windowsFonts(Times=windowsFont("Times New Roman"))
-f0 %>% 
-  filter(!is.na(`Country Income Group`)) %>% 
-  mutate(`Country Income Group` = ifelse(`Country Income Group` == 'Hi',
-                                         'High', `Country Income Group`)) %>% 
-  mutate(`Country Income Group` = factor(`Country Income Group`, 
-                                         levels = c('Low', 'Low-Mid', 'Up-Mid', 'High'))) %>%
-  ggplot(aes(x = Year, y = `Life expectancy`,
-             group = `Country Name`, color = `Country Income Group`)) + 
-  geom_line(alpha = 0.5, size = 0.4) +
+f1 %>% 
+  filter(!is.na(CountryIncomeGroup)) %>% 
+  mutate(CountryIncomeGroup = ifelse(CountryIncomeGroup == 'Hi',
+                                         'High', CountryIncomeGroup)) %>% 
+  mutate(CountryIncomeGroup = factor(CountryIncomeGroup,
+                                     levels = c('Low', 'Low-Mid', 'Up-Mid', 'High'))) %>%
+  ggplot(aes(x = Year, y = Lifeexpectancy,
+             group = CountryName, color = CountryIncomeGroup)) + 
+  geom_line(alpha = 0.5, size = 0.1) +
   theme_bw() + ylab('Life expectancy in each country') +
   scale_x_continuous("Year", labels = as.character(2000:2015), breaks = 2000:2015)+
-  theme(legend.justification = c(1, 1), legend.position = c(0.6, 0.1),
+  theme(legend.justification = c(1, 1), legend.position = c(0.95, 0.1),
         legend.background = element_rect(fill=alpha('white', 0.8)),
         legend.direction="horizontal", text=element_text(family="Times"))+ 
   guides(color=guide_legend(title="Income group", 
@@ -197,55 +229,71 @@ ggsave('Figures/fig1.pdf', width = 10, height = 6.18)
 knitr::include_graphics('Figures/fig1.pdf')
 ```
 
-Figure \@ref(fig:fig1)
+Figure \@ref(fig:fig1) demonstrates the trend of life expectancy in the 139 countries over time, with each line represents a country while a color stands for an income category. The life expectancy in the studied countries were generally increasing from 2010 to 2015. The most significant pattern in the plot was that life expectancy was strongly influenced by income group: the high income countries have the highest life expectancy, while the low income countries generally had the lowest life expectancy. It was also to be noted that the variance of life expectancy in low and low-mid income countries were much higher than that in up-mid and high income countries.
 
+
+
+```{r eval=TRUE, message=FALSE, warning=FALSE}
+f1 = data.table::fread('Data/f1.csv')
+
+require(tableone)
+require(tidyverse)
+vars <- c("Lifeexpectancy", "CHEGDP_SHA2011", "GGHE_DGDP_SHA2011", "PVT_DCHE_SHA2011",
+          "OOPSCHE_SHA2011", "CFACHE_SHA2011",  "CHICHE_SHA2011", "Population", "GDP" )
+
+tab1 <- print(CreateContTable(vars, strata = "CountryIncomeGroup", data = f1), 
+              printToggle = FALSE) %>% 
+  as.data.frame() %>% select(c(2:4, 1)) 
+row.names(tab1) = c(
+  'N',
+  'Life Expectancy',
+  'Current health expenditure as percent of GDP',
+  'Government Health Expenditure as percent of GDP',
+  'Private health expenditure as percent CHE',
+  'Out-of-pocket payment as percent of CHE',
+  'Compulsory financing arrangements as percent of CHE',
+  'Compulsory health insurance as percent of CHE',
+  'Population (millions)',
+  'GDP'
+)
+names(tab1) = c("Low", "Low-Mid", "Up-Mid", "High")
+```
+
+```{r eval=TRUE, message=FALSE}
+require(kableExtra)
+kable(tab1, caption = "Descrptive statistics (2000-2016)", 
+      format = "latex", booktabs = T) %>%
+  kable_styling(latex_options = "scale_down")
+```
+
+\hl{This is not a panel data. Are you sure that 139 countries from 2000 to 2015 were included in Figure 1? It seemed that over 170 countries were included; Data from 2016 was also included in the linear regression models}
 
 
 ```{r eval=TRUE}
 pacman::p_load(tidyverse, stargazer)
-f0 = data.table::fread('Data/f0.csv')
-names(f0)=c('CountryName', 'CountryCode', 'WHORegion', 'Country Income Group', 
-            'Year', "CFACHE_SHA2011", "CHEGDP_SHA2011", "CHE_pc_PPP_SHA2011",
-            "CHE_pc_US_SHA2011", "CHICHE_SHA2011", "DOMCHE_SHA2011", "GFACHE_SHA2011",
-            "GGHEDCHE_SHA2011", "GGHEDGDP_SHA2011", "GGHEDGGE_SHA2011",
-            "GGHED_pc_PPP_SHA2011", "GGHED_pc_US_SHA2011", "OOP_pc_PPP_SHA2011",
-            "OOP_pc_US_SHA2011", "OOPSCHE_SHA2011", "OTHERCHE_SHA2011", "PVTDCHE_SHA2011",
-            "PVTD_pc_PPP_SHA2011", "PVTD_pc_US_SHA2011", "sha11FS", "sha11FS1", 
-            "sha11FS11", "sha11FS5", "sha11FS6", "sha11FS61", "sha11HF", "sha11HF1",
-            "sha11HF11", "sha11HF2", "sha11HF21", "sha11HF3", "VFACHE_SHA2011",
-            "VHICHE_SHA2011", "Status", "Lifeexpectancy", "AdultMortality", "infantdeaths",
-            "Alcohol", "percentageexpenditure", "HepatitisB", "Measles", "BMI",
-            "underfivedeaths", "Polio", "Totalexpenditure", "Diphtheria", "HIVAIDS", 
-            "GDP", "Population", "thinness119", "thinness59", "IncomeComp", "Schooling")
 
-#f1 = f0[f0$CHICHE_SHA2011 != 0&!is.na(f0$CHICHE_SHA2011),]
-f1 = f0 %>% 
-  select(CountryName, Lifeexpectancy, CHEGDP_SHA2011, GGHEDGDP_SHA2011, PVTDCHE_SHA2011,
-    CFACHE_SHA2011, OOPSCHE_SHA2011, Population, GDP, Year, `Country Income Group`) %>% 
-  mutate(Population = Population/1000000,
-         GDP = GDP/1000) %>% 
-  na.omit() %>% 
-  data.table::data.table()
-data.table::fwrite(f1, 'Data/f1.csv')
-
-options(scipen = 999)
 fit01 = lm(
-  Lifeexpectancy ~ CHEGDP_SHA2011 + GGHEDGDP_SHA2011 + PVTDCHE_SHA2011 +
-    CFACHE_SHA2011 + OOPSCHE_SHA2011 + Population + GDP + Year + `Country Income Group`, 
+  Lifeexpectancy ~ CHEGDP_SHA2011 + GGHE_DGDP_SHA2011 +  PVT_DCHE_SHA2011 + 
+    OOPSCHE_SHA2011 + CFACHE_SHA2011 + CHICHE_SHA2011 + 
+    Population + GDP + Year + CountryIncomeGroup, 
   data = f1)
 
-fit_hi = lm(Lifeexpectancy ~  CHEGDP_SHA2011 + GGHEDGDP_SHA2011 + PVTDCHE_SHA2011 + 
-             CFACHE_SHA2011 + OOPSCHE_SHA2011 + Population + GDP + Year, 
-           data = f1[f1$`Country Income Group` == 'Hi',])
-fit_upmid = lm(Lifeexpectancy ~  CHEGDP_SHA2011 + GGHEDGDP_SHA2011 + PVTDCHE_SHA2011 + 
-             CFACHE_SHA2011 + OOPSCHE_SHA2011 + Population + GDP + Year, 
-           data = f1[f1$`Country Income Group` == 'Up-Mid',])
-fit_lowmid = lm(Lifeexpectancy ~  CHEGDP_SHA2011 + GGHEDGDP_SHA2011 + PVTDCHE_SHA2011 + 
-             CFACHE_SHA2011 + OOPSCHE_SHA2011 + Population + GDP + Year, 
-           data = f1[f1$`Country Income Group` == 'Low-Mid',])
-fit_low = lm(Lifeexpectancy ~  CHEGDP_SHA2011 + GGHEDGDP_SHA2011 + PVTDCHE_SHA2011 + 
-             CFACHE_SHA2011 + OOPSCHE_SHA2011 + Population + GDP + Year, 
-           data = f1[f1$`Country Income Group` == 'Low',])
+fit_hi = lm(Lifeexpectancy ~ CHEGDP_SHA2011 + GGHE_DGDP_SHA2011 + 
+              PVT_DCHE_SHA2011 +  OOPSCHE_SHA2011 + CFACHE_SHA2011 + 
+              CHICHE_SHA2011 +  Population + GDP + Year, 
+            data = f1[f1$CountryIncomeGroup == 'Hi',])
+fit_upmid = lm(Lifeexpectancy ~ CHEGDP_SHA2011 + GGHE_DGDP_SHA2011 + 
+              PVT_DCHE_SHA2011 +  OOPSCHE_SHA2011 + CFACHE_SHA2011 + 
+              CHICHE_SHA2011 +  Population + GDP + Year,
+               data = f1[f1$CountryIncomeGroup == 'Up-Mid',])
+fit_lowmid = lm(Lifeexpectancy ~ CHEGDP_SHA2011 + GGHE_DGDP_SHA2011 + 
+              PVT_DCHE_SHA2011 +  OOPSCHE_SHA2011 + CFACHE_SHA2011 + 
+              CHICHE_SHA2011 +  Population + GDP + Year,
+                data = f1[f1$CountryIncomeGroup == 'Low-Mid',])
+fit_low = lm(Lifeexpectancy ~ CHEGDP_SHA2011 + GGHE_DGDP_SHA2011 + 
+              PVT_DCHE_SHA2011 +  OOPSCHE_SHA2011 + CFACHE_SHA2011 + 
+              CHICHE_SHA2011 +  Population + GDP + Year,
+             data = f1[f1$CountryIncomeGroup == 'Low',])
 ```
 
 \hl{Xiaojun Lin, create the Table 1 for f1. write results for Table 1, 2, 3 and Figure 1.}
@@ -261,28 +309,26 @@ f1 = data.table::fread('Data/f1.csv')
 stargazer(fit01, dep.var.labels=c("Life expectancy"), label = 'poolOLS',
           title="OLS model predicting life expectancies in 139 countries from 2000 to 2015",
 covariate.labels=c(
-  "Current Health Expenditure as percent of GDP",
-  "Government Health Expenditure as percent of GDP", 
-  "Private Health Expenditure as percent CHE",
-  "Compulsory Financing Arrangements as percent of CHE",
-  "Out-of-pocket payment as percent of CHE", 
+  "Current health expenditure as percent of GDP",
+  "Government health expenditure as percent of GDP", 
+  "Private health expenditure as percent CHE",
+  "Out-of-pocket payment as percent of CHE",
+  "Compulsory financing arrangements as percent of CHE",
+  "Compulsory health insurance as percent of CHE",
   "Population (millions)", "GDP","Year", 
   "Low income country", "Low to middle income country", 
   "Up to middel income country", "Constant"),
   omit.stat=c("LL","ser","f"), ci=TRUE, ci.level=0.95, 
   single.row=FALSE, header=FALSE, 
-  notes = c("CHE: Current Health Expenditure,", 
-           "GDP: Gross Domestic Product",
-           "GHE: Government Health Expenditure",
-           "PVT-D: Private Health Expenditure",
-           "OOP: Out-of-pocket payment",
-           "CFA: Compulsory Financing Arrangements"),
-  notes.append = TRUE, notes.align = 'l')
+  notes = c("GDP: Gross Domestic Product",
+           "CHE: Current Health Expenditure"),
+  notes.append = TRUE, notes.align = 'l',  style = 'demography')
 ```
 
 Table \@ref(poolOLS) demonstrates XXXXXXX.
 
 \blandscape
+
 ```{r results='asis', eval=TRUE}
 stargazer(fit_low, fit_lowmid, fit_upmid, fit_hi, label = 'stratifiedOLS',
           dep.var.labels=c("Life expectancy"),
@@ -291,12 +337,15 @@ stargazer(fit_low, fit_lowmid, fit_upmid, fit_hi, label = 'stratifiedOLS',
   "Current Health Expenditure as percent of GDP",
   "Government Health Expenditure as percent of GDP", 
   "Private Health Expenditure as percent CHE",
+  "Out-of-pocket payment as percent of CHE",
   "Compulsory Financing Arrangements as percent of CHE",
-  "Out-of-pocket payment as percent of CHE", 
+  "Compulsory health insurance as percent of CHE",
   "Population (millions)", "GDP","Year", "Constant"),
           column.labels=c("Low","Low-mid", "Up-mid", "High"),
-          omit.stat=c("LL","ser","f"), ci=TRUE, single.row=FALSE, header=FALSE)
+          omit.stat=c("LL","ser","f"), ci=TRUE, single.row=FALSE, 
+  header=FALSE, style = 'demography')
 ```
+
 \elandscape
 
 Table \@ref(stratifiedOLS) presents XXXXXXX.
@@ -305,6 +354,20 @@ Discussion
 ==========
 
 
+
+
+Acknowledgements {-}
+================
+We thank the WHO and the World Bank for making data used in this study publicly available for researchers.
+
+Funding {-}
+=======
+None.
+
+
+Availability of data and materials {-}
+==================================
+All data and associated R code are public available at the GitHub repository `caimiao0714/GHRP-UHC`, which can be accessed at [https://github.com/caimiao0714/GHRP-UHC](https://github.com/caimiao0714/GHRP-UHC).
 
 References {-}
 ==========

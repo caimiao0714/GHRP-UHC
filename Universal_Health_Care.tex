@@ -56,7 +56,7 @@
 \hypersetup{breaklinks=true,
             bookmarks=true,
             pdfauthor={},
-            pdftitle={Association between XXX and Life Expectency in 139 Countries: A Retrospective Longitudinal Study},
+            pdftitle={Association between compulsory health insurance and life expectency in 184 countries: A retrospective longitudinal study},
             colorlinks=true,
             urlcolor=blue,
             linkcolor=blue,
@@ -79,7 +79,7 @@
 \begin{document}
 \begin{frontmatter}
 
-  \title{Association between XXX and Life Expectency in 139 Countries: A Retrospective Longitudinal Study}
+  \title{Association between compulsory health insurance and life expectency in 184 countries: A retrospective longitudinal study}
     \author[SLU]{Miao Cai}
    \ead{miao.cai@slu.edu} 
   
@@ -92,9 +92,12 @@
     \author[SCU]{Xiaojun Lin\corref{c1}}
    \ead{xjlin@hust.edu.cn} 
    \cortext[c1]{Corresponding Author}
-      \address[SLU]{Saint Louis University, Saint Louis, MO, 63108}
-    \address[SCU]{Sichuan University, Chengdu, Sichuan, China}
-    \address[WHU]{Wuhan University, Wuhan, Hubei, China}
+    \author[SLU]{Ziqi Peng}
+   \ead{ziqi.peng@slu.edu} 
+  
+      \address[SLU]{College for Public Health and Social Justice, Saint Louis University, Saint Louis, MO, 63108}
+    \address[SCU]{West China School of Public Health, Sichuan University, Chengdu, Sichuan, China, 610044}
+    \address[WHU]{School of Information Management, Wuhan University, Wuhan, Hubei, China, 430072}
   
   \begin{abstract}
   This is the abstract.
@@ -115,77 +118,47 @@
 
 {[}\protect\hyperlink{ref-wagstaff2018progress}{1}{]}.
 
-\hypertarget{special-issue-information}{%
-\section{Special issue information}\label{special-issue-information}}
-
-Universal health coverage (UHC) is one of the key approaches in achieving the 2030 Agenda for Sustainable Development Goals (SDGs). On October 25-26, 2018, the Global Conference on Primary Health Care was held in Kazakhstan, and the Declaration of Astana was signed by 197 Member States under the leadership of the World Health Organization (WHO). In this Declaration, strengthening primary health care system has been considered as an essential step towards achieving Universal Health Coverage.
-
-This thematic series of articles is being launched by the Global Health Research and Policy (GHRP) to serve as a platform to disseminate current research findings, insights, new perspectives, and policy recommendations in promoting UHC worldwide. This will serve to create better knowledge transfer from researches to policy-making and practices and for information and experience sharing. GHRP is encouraging submissions of commentaries, reviews, research articles, and short report of policies on the key elements of UHC. Elements that can be covered in the submissions may include, but not limited to the following:
-
-\begin{itemize}
-\item
-  Health financing system strengthening, with special focus on the development of health financial protection schemes for the disadvantaged population, as well as the integration of different insurance programs.
-\item
-  Primary healthcare system strengthening, with special focus on health workforce and delivery network of primary health care services, equity and quality of primary health care, information systems construction, etc.
-\item
-  People-centered health care system, with special focus on the integration of specialist healthcare services and primary health care, and the provision of continuous services to improve patient experience, etc.
-\item
-  Essential medicines and health products, with special focus on strategic purchasing, relevant mechanism designs and market entry for insurance benefit package.
-\item
-  Medical assistance programs for poverty alleviation as an approach to increase UHC.
-\end{itemize}
-
-This thematic series will be guest edited by Dr.~Beibei Yuan (beibeiyuan@bjmu.edu.cn), Associate Professor from Peking University and Dr.~Lanting Lu (lanting.lu@ruc.edu.cn), Associate Professor from Renmin University of China.
-
-Submissions from anywhere in the world are welcome. Authors are advised to select the Thematic Series option ``Universal Health Coverage'' during their submission. The deadline of submission is on \textbf{April 14, 2019}.
-
 \hypertarget{methods}{%
 \section{Methods}\label{methods}}
 
-\hypertarget{data-souce}{%
-\subsection{Data souce}\label{data-souce}}
+\hypertarget{data-source}{%
+\subsection{Data source}\label{data-source}}
 
-We extracted country level data from the Global Health Expenditure Database on the World Health Organization (WHO) website.{[}\protect\hyperlink{ref-WHOdata}{2}{]} This database includes comparable health expenditure data for around 190 countries from 2000 to 2016. Besides, we downloaded Life expectancy data by country from the Global Health Observatory data repository provided by the WHO.{[}\protect\hyperlink{ref-WHOlife}{3}{]}
+We extracted country level data from the Global Health Expenditure Database on the World Health Organization (WHO) website {[}\protect\hyperlink{ref-WHOdata}{2}{]}.
+This database provides detailed comparable health expenditure data in around 190 countries from 2000 to 2016.
+These health expenditure variables include current health expenditure (CHE) decomposition: domestic government health expenditure, private health expenditure, and out-of-pocket (OOP) payment as percent of CHE;
+financing arrangements decomposition: compulsory financing arrangements, government financing arrangements, compulsory health insurance, household OOP payment as percent of CHE; CHE and government health expenditure as percent of gross domestic product (GDP).
+
+The Global Health Observatory data repository by the WHO provides global health priority data by country in multiple years {[}\protect\hyperlink{ref-worldbank}{3}{]}.
+We obtained life expectancy, GDP, and population data in provided countries from 2000 to 2016.
+Both databases are publicly available, with downloadable comma-separated values or Microsoft Excel files provided on the WHO website.
+The two databases were then merged according to two common keys, country name and year.
 
 \hypertarget{variable-selection}{%
 \subsection{Variable selection}\label{variable-selection}}
 
-Outcome: life expectancy
+The outcome variable in this study was the life expectancy at birth in a country in a specific year.
+It reflects the overll mortality level of all age groups in a country in a given year.
+Life expectancy is one of the most widely used measure of mortality and burden of disease in previous literature {[}\protect\hyperlink{ref-lee2012effect}{4}--\protect\hyperlink{ref-mathers2015causes}{7}{]}.
 
-Independent variables: life expectancy
-
-Variable selection:
-
-\begin{itemize}
-\tightlist
-\item
-  Current Health Expenditure (CHE) as \% GDP: CHEGDP\_SHA2011
-\item
-  Government Health Expenditure (GGHE-D) as \% GDP: GGHEDGDP\_SHA2011
-\item
-  Domestic Private Health Expenditure (PVT-D) as \% CHE: PVTDCHE\_SHA2011
-\item
-  Compulsory Financing Arrangements (CFA) as \% of CHE: CFACHE\_SHA2011
-\item
-  OOP \% CHE: OOPSCHE\_SHA2011
-\item
-  Population
-\item
-  GDP
-\item
-  Year
-\end{itemize}
-
-Multi-collinearity:
-
-CFACHE\_SHA2011 - kept only
-GFACHE\_SHA2011
-CHICHE\_SHA2011
+We used four sets of explanatory variables to predict life expectancy.
+Country level general characteristics include population (in millions), year (2000 to 2015), and GDP (in billions).
+The GDP data were reported in constant 2010 prices, which were adjusted for the effects of price inflation {[}\protect\hyperlink{ref-worldbankconstant}{8}{]}.
+Current health expenditure (CHE) and government health expenditure (GGHE-D) as percent of GDP were used to account for the investment in healthcare in a country.
+Compulsory financing arrangements and compulsory health insurance as percent of the CHE were two major sources of public financing arrangements.
+Private health expenditure and OOP payment as percent of the CHE were two sources healthcare expenditure.
 
 \hypertarget{statistical-analyses}{%
 \subsection{Statistical Analyses}\label{statistical-analyses}}
 
-Point and interval estimates (95\% confidence intervals, 95\% CI), as well as the p-values, were reported for all indepdent variables. A p-value less than 0.05 is viewed as statistically significant. All data cleaning, visualization, statistical modelling, and reporting were performed using R 3.5.3 {[}\protect\hyperlink{ref-R353}{4}{]}. In an effort to promote reproducible research, we have created a public GitHub repository to store all the data and R code we use to write this paper.
+We excluded observations with missing data in either the dependent variable or any of the explanatory variables (n = 294), which resulted in 2,975 complete observations (91\% of the original data) from 184 countries.
+
+A pooled ordinary least square model were used to estimate the association between compulsory health insurance and life expectancy among the 183 countries. Since high and low income countries were characterized by different patterns of life expectancy and health financing schemes, we further conducted stratified analyses among the four income category countries to allow for potentially different patterns of association.
+
+Point and interval estimates (95\% confidence intervals, 95\% CI), as well as the p-values, were reported for all independent variables.
+A p-value less than 0.05 is viewed as statistically significant.
+All data cleaning, visualization, statistical modelling, and reporting were performed using R 3.5.3 {[}\protect\hyperlink{ref-R353}{9}{]}.
+In an effort to promote reproducible research, we have created a public GitHub repository to store all the data and R code we use to write this paper.
 Interested readers can find them at \url{https://github.com/caimiao0714/GHRP-UHC}.
 
 \hypertarget{results}{%
@@ -197,7 +170,33 @@ Interested readers can find them at \url{https://github.com/caimiao0714/GHRP-UHC
 \caption{\label{fig:fig1}Life expectancy in 139 countries from 2000 to 2015}
 \end{figure}
 
-Figure \ref{fig:fig1}
+Figure \ref{fig:fig1} demonstrates the trend of life expectancy in the 139 countries over time, with each line represents a country while a color stands for an income category. The life expectancy in the studied countries were generally increasing from 2010 to 2015. The most significant pattern in the plot was that life expectancy was strongly influenced by income group: the high income countries have the highest life expectancy, while the low income countries generally had the lowest life expectancy. It was also to be noted that the variance of life expectancy in low and low-mid income countries were much higher than that in up-mid and high income countries.
+
+\begin{table}[t]
+
+\caption{\label{tab:unnamed-chunk-2}Descrptive statistics (2000-2016)}
+\centering
+\resizebox{\linewidth}{!}{
+\begin{tabular}{lllll}
+\toprule
+  & Low & Low-Mid & Up-Mid & High\\
+\midrule
+N & 459 & 830 & 826 & 860\\
+Life Expectancy & 56.65 (5.59) & 65.45 (7.26) & 71.22 (5.71) & 77.82 (3.35)\\
+Current health expenditure as percent of GDP & 6.15 (2.46) & 5.36 (2.35) & 5.74 (2.15) & 7.21 (2.70)\\
+Government Health Expenditure as percent of GDP & 1.40 (0.74) & 2.26 (1.66) & 3.18 (1.64) & 5.09 (2.15)\\
+Private health expenditure as percent CHE & 49.91 (18.30) & 47.83 (22.12) & 42.65 (17.53) & 29.39 (12.74)\\
+\addlinespace
+Out-of-pocket payment as percent of CHE & 44.73 (18.82) & 43.37 (21.81) & 35.00 (17.77) & 22.00 (10.76)\\
+Compulsory financing arrangements as percent of CHE & 36.18 (14.99) & 46.49 (21.04) & 55.40 (17.48) & 66.01 (20.50)\\
+Compulsory health insurance as percent of CHE & 1.35 (2.53) & 6.58 (9.78) & 18.06 (22.52) & 23.53 (29.31)\\
+Population (millions) & 17.71 (19.03) & 54.24 (172.60) & 48.99 (188.88) & 22.34 (47.24)\\
+GDP & 0.90 (0.86) & 8.54 (24.51) & 28.61 (89.20) & 86.51 (223.73)\\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\hl{This is not a panel data. Are you sure that 139 countries from 2000 to 2015 were included in Figure 1? It seemed that over 170 countries were included; Data from 2016 was also included in the linear regression models}
 
 \hl{Xiaojun Lin, create the Table 1 for f1. write results for Table 1, 2, 3 and Figure 1.}
 
@@ -205,61 +204,42 @@ Figure \ref{fig:fig1}
   \caption{OLS model predicting life expectancies in 139 countries from 2000 to 2015} 
   \label{poolOLS} 
 \begin{tabular}{@{\extracolsep{5pt}}lc} 
-\\[-1.8ex]\hline 
-\hline \\[-1.8ex] 
- & \multicolumn{1}{c}{\textit{Dependent variable:}} \\ 
-\cline{2-2} 
+\\[-1.8ex]\hline \\[-1.8ex] 
 \\[-1.8ex] & Life expectancy \\ 
 \hline \\[-1.8ex] 
- Current Health Expenditure as percent of GDP & 0.067 \\ 
-  & ($-$0.120, 0.253) \\ 
-  & \\ 
- Government Health Expenditure as percent of GDP & 1.065$^{***}$ \\ 
-  & (0.744, 1.385) \\ 
-  & \\ 
- Private Health Expenditure as percent CHE & $-$0.146$^{***}$ \\ 
-  & ($-$0.186, $-$0.105) \\ 
-  & \\ 
- Compulsory Financing Arrangements as percent of CHE & $-$0.001 \\ 
-  & ($-$0.022, 0.019) \\ 
-  & \\ 
- Out-of-pocket payment as percent of CHE & 0.200$^{***}$ \\ 
-  & (0.165, 0.236) \\ 
-  & \\ 
- Population (millions) & 0.002 \\ 
-  & ($-$0.002, 0.006) \\ 
-  & \\ 
- GDP & 0.035$^{***}$ \\ 
-  & (0.013, 0.057) \\ 
-  & \\ 
- Year & 0.335$^{***}$ \\ 
-  & (0.282, 0.387) \\ 
-  & \\ 
- Low income country & $-$18.672$^{***}$ \\ 
-  & ($-$19.837, $-$17.508) \\ 
-  & \\ 
- Low to middle income country & $-$11.030$^{***}$ \\ 
-  & ($-$11.951, $-$10.109) \\ 
-  & \\ 
- Up to middel income country & $-$5.152$^{***}$ \\ 
-  & ($-$5.985, $-$4.319) \\ 
-  & \\ 
- Constant & $-$600.036$^{***}$ \\ 
-  & ($-$705.527, $-$494.546) \\ 
-  & \\ 
+ Current health expenditure as percent of GDP & 0.162$^{*}$ \\ 
+  & (0.026, 0.298) \\ 
+  Government health expenditure as percent of GDP & 0.482$^{***}$ \\ 
+  & (0.263, 0.702) \\ 
+  Private health expenditure as percent CHE & $-$0.154$^{***}$ \\ 
+  & ($-$0.186, $-$0.122) \\ 
+  Out-of-pocket payment as percent of CHE & 0.174$^{***}$ \\ 
+  & (0.146, 0.201) \\ 
+  Compulsory financing arrangements as percent of CHE & 0.0003 \\ 
+  & ($-$0.016, 0.017) \\ 
+  Compulsory health insurance as percent of CHE & 0.035$^{***}$ \\ 
+  & (0.025, 0.045) \\ 
+  Population (millions) & 0.002$^{**}$ \\ 
+  & (0.001, 0.004) \\ 
+  GDP & 0.001 \\ 
+  & ($-$0.0003, 0.003) \\ 
+  Year & 0.301$^{***}$ \\ 
+  & (0.263, 0.339) \\ 
+  Low income country & $-$19.084$^{***}$ \\ 
+  & ($-$19.889, $-$18.280) \\ 
+  Low to middle income country & $-$10.936$^{***}$ \\ 
+  & ($-$11.539, $-$10.334) \\ 
+  Up to middel income country & $-$5.414$^{***}$ \\ 
+  & ($-$5.945, $-$4.882) \\ 
+  Constant & $-$529.862$^{***}$ \\ 
+  & ($-$605.762, $-$453.961) \\ 
+ \textit{N} & 2,975 \\ 
+R$^{2}$ & 0.695 \\ 
+Adjusted R$^{2}$ & 0.694 \\ 
 \hline \\[-1.8ex] 
-Observations & 2,189 \\ 
-R$^{2}$ & 0.675 \\ 
-Adjusted R$^{2}$ & 0.673 \\ 
-\hline 
-\hline \\[-1.8ex] 
-\textit{Note:}  & \multicolumn{1}{l}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
- & \multicolumn{1}{l}{CHE: Current Health Expenditure,} \\ 
- & \multicolumn{1}{l}{GDP: Gross Domestic Product} \\ 
- & \multicolumn{1}{l}{GHE: Government Health Expenditure} \\ 
- & \multicolumn{1}{l}{PVT-D: Private Health Expenditure} \\ 
- & \multicolumn{1}{l}{OOP: Out-of-pocket payment} \\ 
- & \multicolumn{1}{l}{CFA: Compulsory Financing Arrangements} \\ 
+\multicolumn{2}{l}{$^{*}$p $<$ .05; $^{**}$p $<$ .01; $^{***}$p $<$ .001} \\ 
+\multicolumn{2}{l}{GDP: Gross Domestic Product} \\ 
+\multicolumn{2}{l}{CHE: Current Health Expenditure} \\ 
 \end{tabular} 
 \end{table}
 
@@ -271,56 +251,63 @@ Table \ref{poolOLS} demonstrates XXXXXXX.
   \caption{OLS model predicting life expectancies from 2000 to 2015 stratifeid by country income categories} 
   \label{stratifiedOLS} 
 \begin{tabular}{@{\extracolsep{5pt}}lD{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} } 
-\\[-1.8ex]\hline 
-\hline \\[-1.8ex] 
- & \multicolumn{4}{c}{\textit{Dependent variable:}} \\ 
-\cline{2-5} 
+\\[-1.8ex]\hline \\[-1.8ex] 
 \\[-1.8ex] & \multicolumn{4}{c}{Life expectancy} \\ 
  & \multicolumn{1}{c}{Low} & \multicolumn{1}{c}{Low-mid} & \multicolumn{1}{c}{Up-mid} & \multicolumn{1}{c}{High} \\ 
-\\[-1.8ex] & \multicolumn{1}{c}{(1)} & \multicolumn{1}{c}{(2)} & \multicolumn{1}{c}{(3)} & \multicolumn{1}{c}{(4)}\\ 
+\\[-1.8ex] & \multicolumn{1}{c}{Model 1} & \multicolumn{1}{c}{Model 2} & \multicolumn{1}{c}{Model 3} & \multicolumn{1}{c}{Model 4}\\ 
 \hline \\[-1.8ex] 
- Current Health Expenditure as percent of GDP & -0.532^{***} & 0.790^{***} & 0.943^{***} & 1.062^{**} \\ 
-  & \multicolumn{1}{c}{(-0.801$, $-0.262)} & \multicolumn{1}{c}{(0.286$, $1.294)} & \multicolumn{1}{c}{(0.380$, $1.506)} & \multicolumn{1}{c}{(0.211$, $1.913)} \\ 
-  & & & & \\ 
- Government Health Expenditure as percent of GDP & 0.378 & -0.547 & -0.224 & 0.274 \\ 
-  & \multicolumn{1}{c}{(-0.617$, $1.372)} & \multicolumn{1}{c}{(-1.432$, $0.338)} & \multicolumn{1}{c}{(-1.225$, $0.777)} & \multicolumn{1}{c}{(-0.815$, $1.363)} \\ 
-  & & & & \\ 
- Private Health Expenditure as percent CHE & 0.207^{***} & -0.320^{***} & -0.206^{***} & -0.050 \\ 
-  & \multicolumn{1}{c}{(0.094$, $0.320)} & \multicolumn{1}{c}{(-0.437$, $-0.202)} & \multicolumn{1}{c}{(-0.298$, $-0.113)} & \multicolumn{1}{c}{(-0.155$, $0.054)} \\ 
-  & & & & \\ 
- Compulsory Financing Arrangements as percent of CHE & -0.069^{**} & 0.125^{***} & 0.118^{***} & -0.001 \\ 
-  & \multicolumn{1}{c}{(-0.134$, $-0.004)} & \multicolumn{1}{c}{(0.036$, $0.214)} & \multicolumn{1}{c}{(0.049$, $0.188)} & \multicolumn{1}{c}{(-0.015$, $0.013)} \\ 
-  & & & & \\ 
- Out-of-pocket payment as percent of CHE & -0.187^{***} & 0.445^{***} & 0.279^{***} & 0.044 \\ 
-  & \multicolumn{1}{c}{(-0.293$, $-0.082)} & \multicolumn{1}{c}{(0.334$, $0.555)} & \multicolumn{1}{c}{(0.233$, $0.326)} & \multicolumn{1}{c}{(-0.013$, $0.102)} \\ 
-  & & & & \\ 
- Population (millions) & 0.040^{**} & 0.001 & 0.020^{***} & -0.003 \\ 
-  & \multicolumn{1}{c}{(0.002$, $0.078)} & \multicolumn{1}{c}{(-0.004$, $0.007)} & \multicolumn{1}{c}{(0.005$, $0.034)} & \multicolumn{1}{c}{(-0.021$, $0.014)} \\ 
-  & & & & \\ 
- GDP & 0.121 & 1.454^{***} & -0.095 & 0.029^{***} \\ 
-  & \multicolumn{1}{c}{(-2.150$, $2.393)} & \multicolumn{1}{c}{(0.895$, $2.013)} & \multicolumn{1}{c}{(-0.215$, $0.026)} & \multicolumn{1}{c}{(0.016$, $0.042)} \\ 
-  & & & & \\ 
- Year & 0.650^{***} & 0.182^{***} & 0.252^{***} & 0.150^{***} \\ 
-  & \multicolumn{1}{c}{(0.523$, $0.777)} & \multicolumn{1}{c}{(0.047$, $0.317)} & \multicolumn{1}{c}{(0.160$, $0.345)} & \multicolumn{1}{c}{(0.088$, $0.212)} \\ 
-  & & & & \\ 
- Constant & -1,245.363^{***} & -314.655^{**} & -447.064^{***} & -231.842^{***} \\ 
-  & \multicolumn{1}{c}{(-1,500.030$, $-990.696)} & \multicolumn{1}{c}{(-586.047$, $-43.263)} & \multicolumn{1}{c}{(-632.238$, $-261.889)} & \multicolumn{1}{c}{(-355.918$, $-107.765)} \\ 
-  & & & & \\ 
+ Current Health Expenditure as percent of GDP & -0.155 & 0.157 & 1.022^{***} & -0.719^{***} \\ 
+  & \multicolumn{1}{c}{(-0.377$, $0.067)} & \multicolumn{1}{c}{(-0.122$, $0.436)} & \multicolumn{1}{c}{(0.595$, $1.448)} & \multicolumn{1}{c}{(-1.039$, $-0.399)} \\ 
+  Government Health Expenditure as percent of GDP & -0.394 & 0.099 & -0.890^{*} & 1.975^{***} \\ 
+  & \multicolumn{1}{c}{(-1.189$, $0.402)} & \multicolumn{1}{c}{(-0.391$, $0.590)} & \multicolumn{1}{c}{(-1.597$, $-0.183)} & \multicolumn{1}{c}{(1.554$, $2.397)} \\ 
+  Private Health Expenditure as percent CHE & 0.174^{***} & -0.373^{***} & -0.137^{***} & 0.116^{***} \\ 
+  & \multicolumn{1}{c}{(0.087$, $0.262)} & \multicolumn{1}{c}{(-0.469$, $-0.277)} & \multicolumn{1}{c}{(-0.215$, $-0.059)} & \multicolumn{1}{c}{(0.072$, $0.159)} \\ 
+  Out-of-pocket payment as percent of CHE & -0.172^{***} & 0.435^{***} & 0.239^{***} & -0.043^{*} \\ 
+  & \multicolumn{1}{c}{(-0.254$, $-0.090)} & \multicolumn{1}{c}{(0.349$, $0.520)} & \multicolumn{1}{c}{(0.201$, $0.277)} & \multicolumn{1}{c}{(-0.076$, $-0.010)} \\ 
+  Compulsory Financing Arrangements as percent of CHE & -0.024 & 0.054 & 0.148^{***} & 0.002 \\ 
+  & \multicolumn{1}{c}{(-0.075$, $0.026)} & \multicolumn{1}{c}{(-0.008$, $0.116)} & \multicolumn{1}{c}{(0.087$, $0.210)} & \multicolumn{1}{c}{(-0.009$, $0.012)} \\ 
+  Compulsory health insurance as percent of CHE & 0.224^{**} & 0.243^{***} & 0.061^{***} & -0.011^{***} \\ 
+  & \multicolumn{1}{c}{(0.055$, $0.392)} & \multicolumn{1}{c}{(0.195$, $0.291)} & \multicolumn{1}{c}{(0.045$, $0.078)} & \multicolumn{1}{c}{(-0.018$, $-0.005)} \\ 
+  Population (millions) & -0.056^{*} & -0.005 & 0.003 & 0.012 \\ 
+  & \multicolumn{1}{c}{(-0.100$, $-0.012)} & \multicolumn{1}{c}{(-0.012$, $0.002)} & \multicolumn{1}{c}{(-0.001$, $0.007)} & \multicolumn{1}{c}{(-0.009$, $0.032)} \\ 
+  GDP & 2.435^{***} & 0.060^{*} & 0.001 & -0.003 \\ 
+  & \multicolumn{1}{c}{(1.427$, $3.444)} & \multicolumn{1}{c}{(0.011$, $0.109)} & \multicolumn{1}{c}{(-0.007$, $0.009)} & \multicolumn{1}{c}{(-0.007$, $0.002)} \\ 
+  Year & 0.506^{***} & 0.289^{***} & 0.225^{***} & 0.158^{***} \\ 
+  & \multicolumn{1}{c}{(0.409$, $0.602)} & \multicolumn{1}{c}{(0.200$, $0.378)} & \multicolumn{1}{c}{(0.160$, $0.290)} & \multicolumn{1}{c}{(0.122$, $0.195)} \\ 
+  Constant & -958.790^{***} & -521.271^{***} & -395.563^{***} & -247.217^{***} \\ 
+  & \multicolumn{1}{c}{(-1,152.821$, $-764.759)} & \multicolumn{1}{c}{(-699.343$, $-343.198)} & \multicolumn{1}{c}{(-525.258$, $-265.868)} & \multicolumn{1}{c}{(-319.848$, $-174.585)} \\ 
+ \textit{N} & \multicolumn{1}{c}{459} & \multicolumn{1}{c}{830} & \multicolumn{1}{c}{826} & \multicolumn{1}{c}{860} \\ 
+R$^{2}$ & \multicolumn{1}{c}{0.391} & \multicolumn{1}{c}{0.304} & \multicolumn{1}{c}{0.385} & \multicolumn{1}{c}{0.465} \\ 
+Adjusted R$^{2}$ & \multicolumn{1}{c}{0.379} & \multicolumn{1}{c}{0.296} & \multicolumn{1}{c}{0.378} & \multicolumn{1}{c}{0.460} \\ 
 \hline \\[-1.8ex] 
-Observations & \multicolumn{1}{c}{384} & \multicolumn{1}{c}{620} & \multicolumn{1}{c}{652} & \multicolumn{1}{c}{533} \\ 
-R$^{2}$ & \multicolumn{1}{c}{0.315} & \multicolumn{1}{c}{0.203} & \multicolumn{1}{c}{0.307} & \multicolumn{1}{c}{0.478} \\ 
-Adjusted R$^{2}$ & \multicolumn{1}{c}{0.300} & \multicolumn{1}{c}{0.192} & \multicolumn{1}{c}{0.298} & \multicolumn{1}{c}{0.470} \\ 
-\hline 
-\hline \\[-1.8ex] 
-\textit{Note:}  & \multicolumn{4}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\multicolumn{5}{l}{$^{*}$p $<$ .05; $^{**}$p $<$ .01; $^{***}$p $<$ .001} \\ 
 \end{tabular} 
-\end{table} 
+\end{table}
+
 \end{landscape}
 
 Table \ref{stratifiedOLS} presents XXXXXXX.
 
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
+
+\hypertarget{acknowledgements}{%
+\section*{Acknowledgements}\label{acknowledgements}}
+\addcontentsline{toc}{section}{Acknowledgements}
+
+We thank the WHO and the World Bank for making data used in this study publicly available for researchers.
+
+\hypertarget{funding}{%
+\section*{Funding}\label{funding}}
+\addcontentsline{toc}{section}{Funding}
+
+None.
+
+\hypertarget{availability-of-data-and-materials}{%
+\section*{Availability of data and materials}\label{availability-of-data-and-materials}}
+\addcontentsline{toc}{section}{Availability of data and materials}
+
+All data and associated R code are public available at the GitHub repository \texttt{caimiao0714/GHRP-UHC}, which can be accessed at \url{https://github.com/caimiao0714/GHRP-UHC}.
 
 \hypertarget{references}{%
 \section*{References}\label{references}}
@@ -333,11 +320,26 @@ Table \ref{stratifiedOLS} presents XXXXXXX.
 \leavevmode\hypertarget{ref-WHOdata}{}%
 2. The World Health Organization. Global Health Expenditure Database. 2016. \url{http://apps.who.int/nha/database/Select/Indicators/en}. Accessed 20 Mar 2019.
 
-\leavevmode\hypertarget{ref-WHOlife}{}%
-3. The World Health Organization. Global Health Observatory data repository. 2018. \url{http://apps.who.int/nha/database/Select/Indicators/en}. Accessed 6 Apr 2018.
+\leavevmode\hypertarget{ref-worldbank}{}%
+3. The World Bank. World Bank Open Data. 2018. \url{https://data.worldbank.org/}. Accessed 6 Apr 2018.
+
+\leavevmode\hypertarget{ref-lee2012effect}{}%
+4. Lee I-M, Shiroma EJ, Lobelo F, Puska P, Blair SN, Katzmarzyk PT, et al. Effect of physical inactivity on major non-communicable diseases worldwide: An analysis of burden of disease and life expectancy. The lancet. 2012;380:219--29.
+
+\leavevmode\hypertarget{ref-salomon2012healthy}{}%
+5. Salomon JA, Wang H, Freeman MK, Vos T, Flaxman AD, Lopez AD, et al. Healthy life expectancy for 187 countries, 1990--2010: A systematic analysis for the global burden disease study 2010. The Lancet. 2012;380:2144--62.
+
+\leavevmode\hypertarget{ref-bennett2015future}{}%
+6. Bennett JE, Li G, Foreman K, Best N, Kontis V, Pearson C, et al. The future of life expectancy and life expectancy inequalities in england and wales: Bayesian spatiotemporal forecasting. The Lancet. 2015;386:163--70.
+
+\leavevmode\hypertarget{ref-mathers2015causes}{}%
+7. Mathers CD, Stevens GA, Boerma T, White RA, Tobias MI. Causes of international increases in older age life expectancy. The Lancet. 2015;385:540--8.
+
+\leavevmode\hypertarget{ref-worldbankconstant}{}%
+8. The World Bank. What is the difference between current and constant data? 2018. \url{https://datahelpdesk.worldbank.org/knowledgebase/articles/114942-what-is-the-difference-between-current-and-constan}. Accessed 6 Apr 2018.
 
 \leavevmode\hypertarget{ref-R353}{}%
-4. R Core Team. R: A language and environment for statistical computing. Vienna, Austria: R Foundation for Statistical Computing; 2019. \url{https://www.R-project.org/}.
+9. R Core Team. R: A language and environment for statistical computing. Vienna, Austria: R Foundation for Statistical Computing; 2019. \url{https://www.R-project.org/}.
 
 \end{document}
 
