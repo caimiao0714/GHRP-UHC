@@ -3,5 +3,4 @@
 .RData
 .Ruserdata
 Universal_Health_Care_cache/
-Data/*
-!Data/alldat.csv
+Data/AllData.xlsx

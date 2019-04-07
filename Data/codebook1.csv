@@ -1,0 +1,34 @@
+Indicator Name,Indicator Code,Indicator Unit
+Current Health Expenditure (CHE) as % Gross Domestic Product (GDP),CHE%GDP_SHA2011,Ones
+Current health expenditure by financing schemes,sha11.HF,Millions
+Household out-of-pocket payment,sha11.HF.3,Millions
+Voluntary health insurance schemes,sha11.HF.2.1,Millions
+Voluntary health care payment schemes,sha11.HF.2,Millions
+Government schemes,sha11.HF.1.1,Millions
+Government schemes and compulsory contributory health care financing schemes,sha11.HF.1,Millions
+Current health expenditure by revenues of health care financing schemes,sha11.FS,Millions
+Transfers from government domestic revenue (allocated to health purposes),sha11.FS.1,Millions
+Internal transfers and grants,sha11.FS.1.1,Millions
+Voluntary prepayment,sha11.FS.5,Millions
+Other domestic revenues n.e.c.,sha11.FS.6,Millions
+Other revenues from households n.e.c.,sha11.FS.6.1,Millions
+Domestic General Government Health Expenditure (GGHE-D) as % Current Health Expenditure (CHE),GGHE-D%CHE_SHA2011,Ones
+Domestic Private Health Expenditure (PVT-D) as % Current Health Expenditure (CHE),PVT-D%CHE_SHA2011,Ones
+Domestic General Government Health Expenditure (GGHE-D) as % Gross Domestic Product (GDP),GGHE-D%GDP_SHA2011,Ones
+Out-of-pocket (OOPS) as % of Current Health Expenditure (CHE),OOPS%CHE_SHA2011,Ones
+Current Health Expenditure (CHE) per Capita in US$,CHE_pc_US$_SHA2011,Ones
+Current Health Expenditure (CHE) per Capita in PPP,CHE_pc_PPP_SHA2011,Ones
+Domestic General Government Health Expenditure (GGHE-D) per Capita in US$,GGHE-D_pc_US$_SHA2011,Ones
+Domestic General Government Health Expenditure (GGHE-D) per Capita in PPP Int$,GGHE-D_pc_PPP_SHA2011,Ones
+Domestic Private Health Expenditure (PVT-D) per Capita in US$,PVT-D_pc_US$_SHA2011,Ones
+Domestic Private Health Expenditure (PVT-D) per Capita in PPP Int$,PVT-D_pc_PPP_SHA2011,Ones
+Domestic Health Expenditure (DOM) as % of Current Health Expenditure (CHE),DOM%CHE_SHA2011,Ones
+Domestic General Government Health Expenditure (GGHE-D) as % General Government Expenditure (GGE),GGHE-D%GGE_SHA2011,Ones
+Compulsory Financing Arrangements (CFA) as % of Current Health Expenditure (CHE),CFA%CHE_SHA2011,Ones
+Government Financing Arrangements (GFA) as % of Currrent Health Expenditure (CHE),GFA%CHE_SHA2011,Ones
+Compulsory Health Insurance (CHI) as % of Current Health Expenditure (CHE),CHI%CHE_SHA2011,Ones
+Voluntary Financing Arrangements (VFA) as % of Current Health Expenditure (CHE),VFA%CHE_SHA2011,Ones
+Voluntary Health Insurance (VHI) as % of Current Health Expenditure (CHE),VHI%CHE_SHA2011,Ones
+Other Private Health Expenditure (OTHER) as % Current Health Expenditure (CHE),OTHER%CHE_SHA2011,Ones
+Out-of-Pocket Expenditure (OOPS) per Capita in US$,OOP_pc_US$_SHA2011,Ones
+Out-of-Pocket Expenditure (OOPS) per Capita in PPP Int$,OOP_pc_PPP_SHA2011,Ones
