@@ -65,14 +65,15 @@ knitr::opts_chunk$set(echo = FALSE, eval=FALSE, cache = FALSE, fig.pos = 'H')
 Introduction
 ============
 
-\hl{government health expenditure and life expectancy.}
+\hl{compulsory health insurance and life expectancy.}
 
-[@wagstaff2018progress].
+Globally, approximately 1.2 billion people still live in extreme poverty and 2.7 billion live in moderate poverty [@olinto2013state]. 
+Poverty is the primary cause of ill-health and loss of life expectancy with exposure to risky environment and insufficient access to health care service [@world2001dying; @ezeh2017history].
+To decrease the share of out-of-pocket spending and ensure access to health care among the economically disadvantaged population,  health care insurance coverage and prepayment schemes are widely established in health systems around the world [@wagstaff2018progress].
+In developing countries, compulsory health insurance is widely introduced as an effective tool to concentrate resources in the health sector and provide needed medical service to the low-income households [@abel1992health; @abel1994employer; @jowett2003impact; @ensor1999developing; @meng2015consolidating].
 
- 
 
-
-
+In most countries, compulsory health insurance and governmental schemes are the main sources of health care expenditure [@healthglance2017].
 
 
 Methods
@@ -85,42 +86,46 @@ This database provides detailed comparable health expenditure data in around 190
 These health expenditure variables include current health expenditure (CHE) decomposition: domestic government health expenditure, private health expenditure, and out-of-pocket (OOP) payment as percent of CHE; 
 financing arrangements decomposition: compulsory financing arrangements, government financing arrangements, compulsory health insurance, household OOP payment as percent of CHE; CHE and government health expenditure as percent of gross domestic product (GDP).
 
-The Global Health Observatory data repository by the WHO provides global health priority data by country in multiple years [@worldbank]. 
-We obtained life expectancy, GDP, and population data in provided countries from 2000 to 2016.
+
+Besided country specific decomposed health expenditure and financing arrangements, we also extracted life expectancy, GDP, and population data between 2000 and 2016 in the listed countries from the World Bank Open Data [@worldbank].
 Both databases are publicly available, with downloadable comma-separated values or Microsoft Excel files provided on the WHO website. 
 The two databases were then merged according to two common keys, country name and year.
 
 
 Variable selection
 ------------------
-The outcome variable in this study was the life expectancy at birth in a country in a specific year. 
+We considered life expectancy at birth in a country in a specific year at the outcome variable in this study. 
 It reflects the overll mortality level of all age groups in a country in a given year. 
 Life expectancy is one of the most widely used measure of mortality and burden of disease in previous literature [@lee2012effect; @salomon2012healthy; @bennett2015future; @mathers2015causes].
 
-We used four sets of explanatory variables to predict life expectancy. 
-Country level general characteristics include population (in millions), year (2000 to 2015), and GDP (in billions). 
+We included three key sets of explanatory variables to predict life expectancy in the 184 countries over time. 
+Country level general characteristics included population (in millions), year (2000 to 2015), and GDP (in billions). 
 The GDP data were reported in constant 2010 prices, which were adjusted for the effects of price inflation [@worldbankconstant]. 
-Current health expenditure (CHE) and government health expenditure (GGHE-D) as percent of GDP were used to account for the investment in healthcare in a country.
-Compulsory financing arrangements and compulsory health insurance as percent of the CHE were two major sources of public financing arrangements.
+Current health expenditure (CHE) and government health expenditure (GGHE-D) as percent of GDP were used to account for the investment in healthcare in a country. 
+Compulsory financing arrangements and compulsory health insurance as percent of the CHE were included to account for different sources of financing arrangements.
 Private health expenditure and OOP payment as percent of the CHE were two sources healthcare expenditure.
+These percents varied in the range of 0 and 100.
 
 
 Statistical Analyses
 --------------------
-We excluded observations with missing data in either the dependent variable or any of the explanatory variables (n = 294), which resulted in 2,975 complete observations (91% of the original data) from 184 countries. 
+Observations with missing data in either the dependent variable or any of the explanatory variables were excluded, and we ended up with 2,975 complete observations (91% of the original data) from 184 countries. 
+Since only 166 of the 184 countries (90.2%) had complete data in the sixteen-year period (2000 to 2016), our empirical analysis relied on an unbalanaced country-level panel data.
+Among the 184 sample countries, there were 49 in African Region, 35 in Region of the America, 19 in South-East Asia Region, 51 in European Region, 10 in Eastern Mediterranean Region and 23 in Western Pacific Region [@WHOregion].
 
-A pooled ordinary least square model were used to estimate the association between compulsory health insurance and life expectancy among the 183 countries. Since high and low income countries were characterized by different patterns of life expectancy and health financing schemes, we further conducted stratified analyses among the four income category countries to allow for potentially different patterns of association.
+We estimated the association between compulsory health insurance and life expectancy among the 183 countries using an ordinary least square model, accounting for all the covariates and time trend fixed-effects.
+Since high and low income countries can be characterized by different patterns of life expectancy and health financing schemes, we further conducted stratified analyses among the four income category countries to allow for potentially different patterns of association between compulsory health insurance and life expectancy among the 183 countries.
+Our main hypothesis is that compulsory health insurance is positively associated with life expectancy.
 
-Point and interval estimates (95% confidence intervals, 95% CI), as well as the p-values, were reported for all independent variables. 
+We reported point and interval estimates (95% confidence intervals, 95% CI), as well as the significance of all independent variables. 
 A p-value less than 0.05 is viewed as statistically significant. 
-All data cleaning, visualization, statistical modelling, and reporting were performed using R 3.5.3 [@R353]. 
-In an effort to promote reproducible research, we have created a public GitHub repository to store all the data and R code we use to write this paper. 
+All data cleaning, visualization, statistical modelling, and reporting were performed using statistical computing and graphics environment R, version 3.5.3 [@R353]. 
+In an effort to promote reproducible research, we have created a public GitHub repository to store all the data and R code we used to write this paper. 
 Interested readers can find them at [https://github.com/caimiao0714/GHRP-UHC](https://github.com/caimiao0714/GHRP-UHC).
 
 
 Results
 =======
-
 
 ```{r DataClean, eval=FALSE}
 pacman::p_load(tidyverse, tidyr)
@@ -192,48 +197,14 @@ f1 = d2 %>%
          GDP = GDP/10000000000) %>% 
   na.omit() %>% 
   data.table::data.table()
+# count different continents
+#f1 %>% distinct(CountryName, .keep_all = TRUE) %>% count(CountryWHORegion)
 data.table::fwrite(f1, 'Data/f1.csv')
 ```
 
+## Characteristics of the countries by income group
 
-
-
-```{r CreateFig1, eval=FALSE}
-pacman::p_load(tidyverse)
-f1 = readr::read_csv('Data/f1.csv')
-
-# adjusting legend alpha:
-# https://stackoverflow.com/questions/40944239/removing-ggplot2-legend-removes-whole-data-from-the-plot
-windowsFonts(Times=windowsFont("Times New Roman"))
-f1 %>% 
-  filter(!is.na(CountryIncomeGroup)) %>% 
-  mutate(CountryIncomeGroup = ifelse(CountryIncomeGroup == 'Hi',
-                                         'High', CountryIncomeGroup)) %>% 
-  mutate(CountryIncomeGroup = factor(CountryIncomeGroup,
-                                     levels = c('Low', 'Low-Mid', 'Up-Mid', 'High'))) %>%
-  ggplot(aes(x = Year, y = Lifeexpectancy,
-             group = CountryName, color = CountryIncomeGroup)) + 
-  geom_line(alpha = 0.5, size = 0.1) +
-  theme_bw() + ylab('Life expectancy in each country') +
-  scale_x_continuous("Year", labels = as.character(2000:2015), breaks = 2000:2015)+
-  theme(legend.justification = c(1, 1), legend.position = c(0.95, 0.1),
-        legend.background = element_rect(fill=alpha('white', 0.8)),
-        legend.direction="horizontal", text=element_text(family="Times"))+ 
-  guides(color=guide_legend(title="Income group", 
-                            override.aes = list(alpha = 1, size = 2)))
-# Country Income Group, Country WHO Region
-ggsave('Figures/fig1.pdf', width = 10, height = 6.18)
-```
-
-```{r fig1, eval=TRUE,fig.cap='Life expectancy in 139 countries from 2000 to 2015'}
-knitr::include_graphics('Figures/fig1.pdf')
-```
-
-Figure \@ref(fig:fig1) demonstrates the trend of life expectancy in the 139 countries over time, with each line represents a country while a color stands for an income category. The life expectancy in the studied countries were generally increasing from 2010 to 2015. The most significant pattern in the plot was that life expectancy was strongly influenced by income group: the high income countries have the highest life expectancy, while the low income countries generally had the lowest life expectancy. It was also to be noted that the variance of life expectancy in low and low-mid income countries were much higher than that in up-mid and high income countries.
-
-
-
-```{r eval=TRUE, message=FALSE, warning=FALSE}
+```{r createTable1, eval=TRUE, message=FALSE, warning=FALSE}
 f1 = data.table::fread('Data/f1.csv')
 
 require(tableone)
@@ -259,17 +230,57 @@ row.names(tab1) = c(
 names(tab1) = c("Low", "Low-Mid", "Up-Mid", "High")
 ```
 
-```{r eval=TRUE, message=FALSE}
+```{r descriptive, eval=TRUE, message=FALSE}
 require(kableExtra)
-kable(tab1, caption = "Descrptive statistics (2000-2016)", 
+kable(tab1, caption = "Characteristics of the 184 countries by income group, 2000 - 2016", 
       format = "latex", booktabs = T) %>%
-  kable_styling(latex_options = "scale_down")
+  kable_styling(latex_options = "scale_down") %>% 
+  footnote(general = "GDP: Gross Domestic Product; CHE: Current Health Expenditure")
 ```
 
-\hl{This is not a panel data. Are you sure that 139 countries from 2000 to 2015 were included in Figure 1? It seemed that over 170 countries were included; Data from 2016 was also included in the linear regression models}
+Table \@ref(tab:descriptive) presents the characteristics of the study countries stratified by income group. Consistent with Figure 1, high income countries had the highest average life expectancy, followed by up-mid, low-mid, and low income countries. With regard to healthcare expenditure, it appeared that lower income countries had less government health expenditure as percent of GDP, more private health expenditure and OOP payments as percent of GDP, compared to higher income countries. In terms of financing arrangement, higher income countries had higher percent of compulsory financing arrangements and compulsory health insurance as percent of current health expenditure. Compared to low-mid and up-mid income countries, high and low income countries had less population but more current health expenditure as percent of GDP.
 
 
-```{r eval=TRUE}
+
+## Life expectancy time trend in different income groups
+
+```{r CreateFig1, eval=FALSE}
+pacman::p_load(tidyverse)
+f1 = readr::read_csv('Data/f1.csv')
+
+# adjusting legend alpha:
+# https://stackoverflow.com/questions/40944239/removing-ggplot2-legend-removes-whole-data-from-the-plot
+windowsFonts(Times=windowsFont("Times New Roman"))
+f1 %>% 
+  filter(!is.na(CountryIncomeGroup)) %>% 
+  mutate(CountryIncomeGroup = ifelse(CountryIncomeGroup == 'Hi',
+                                         'High', CountryIncomeGroup)) %>% 
+  mutate(CountryIncomeGroup = factor(CountryIncomeGroup,
+                                     levels = c('Low', 'Low-Mid', 'Up-Mid', 'High'))) %>%
+  ggplot(aes(x = Year, y = Lifeexpectancy,
+             group = CountryName, color = CountryIncomeGroup)) + 
+  geom_line(alpha = 0.5, size = 0.1) +
+  theme_bw() + ylab('Life expectancy in each country') +
+  scale_x_continuous("Year", labels = as.character(2000:2016), breaks = 2000:2016)+
+  theme(legend.justification = c(1, 1), legend.position = c(0.95, 0.1),
+        legend.background = element_rect(fill=alpha('white', 0.8)),
+        legend.direction="horizontal", text=element_text(family="Times"))+ 
+  guides(color=guide_legend(title="Income group", 
+                            override.aes = list(alpha = 1, size = 2)))
+# Country Income Group, Country WHO Region
+ggsave('Figures/fig1.pdf', width = 10, height = 6.18)
+```
+
+
+```{r fig1, eval=TRUE,fig.cap='Life expectancy in 184 countries stratified by country income group, 2000 - 2016'}
+knitr::include_graphics('Figures/fig1.pdf')
+```
+
+Figure \@ref(fig:fig1) demonstrates the trend of life expectancy in the 184 countries over the seventeen-year period, with each line represents a country while a color stands for an income category. The life expectancy in the studied countries were generally linearly increasing from 2010 to 2016. The most significant pattern in the plot was that life expectancy was strongly influenced by income group: the high income countries had the highest life expectancy, which increased from about 77 in 2000 to around 80 years old in 2016; the low income countries generally had the lowest life expectancy, which increased from around 50 to about 58 years old. The gap of life expectancy between high and low income countries had narrowed from 2000 to 2016. It was also to be noted that the variance of life expectancy in low and low-mid income countries were much higher than that in up-mid and high income countries.
+
+## Potential life expectancy gain by compulsory health insurance
+
+```{r statModel, eval=TRUE}
 pacman::p_load(tidyverse, stargazer)
 
 fit01 = lm(
@@ -296,18 +307,9 @@ fit_low = lm(Lifeexpectancy ~ CHEGDP_SHA2011 + GGHE_DGDP_SHA2011 +
              data = f1[f1$CountryIncomeGroup == 'Low',])
 ```
 
-\hl{Xiaojun Lin, create the Table 1 for f1. write results for Table 1, 2, 3 and Figure 1.}
-
-```{r}
-# NEED A TABLE 1 for HERE for f1
-f1 = data.table::fread('Data/f1.csv')
-```
-
-
-
-```{r results='asis', eval=TRUE}
+```{r model1, results='asis', eval=TRUE}
 stargazer(fit01, dep.var.labels=c("Life expectancy"), label = 'poolOLS',
-          title="OLS model predicting life expectancies in 139 countries from 2000 to 2015",
+          title="OLS model predicting life expectancy in 184 countries, 2000 - 2016",
 covariate.labels=c(
   "Current health expenditure as percent of GDP",
   "Government health expenditure as percent of GDP", 
@@ -322,17 +324,22 @@ covariate.labels=c(
   single.row=FALSE, header=FALSE, 
   notes = c("GDP: Gross Domestic Product",
            "CHE: Current Health Expenditure"),
-  notes.append = TRUE, notes.align = 'l',  style = 'demography')
+  notes.append = TRUE, notes.align = 'l',  
+style = 'demography', table.placement = "H")
 ```
 
-Table \@ref(poolOLS) demonstrates XXXXXXX.
+Table \@ref(poolOLS) presents the overall relationship between compulsory health insurance and life expectancy. Controlling for other covariates, one percent increase in compulsory health insurance as percent of CHE was associated with 0.035 years (95% CI: [0.025, 0.045]) increase in life expectancy overall.
+
+
+## Potential life expectancy gain by compulsory health insurance in different income groups
+
+Table \@ref(stratifiedOLS) presents relationship between compulsory health insurance as percent of CHE and life expectancy in different income group countries. The percent of compulsory health insurance was positive associated with life expectancy among low ($\beta = 0.224$, 95% CI: [0.055, 0.392]), low-mid ($\beta = 0.243$, 95% CI: [0.195, 0.291]), and up-mid income ($\beta = 0.061$, 95% CI: [0.045, 0.078]) countries. However, this association turned out to be negative among high income countries ($\beta = -0.011$, 95% CI: [-0.018, 0.005]), although the effect size was very small.
 
 \blandscape
-
-```{r results='asis', eval=TRUE}
+```{r model2, results='asis', eval=TRUE}
 stargazer(fit_low, fit_lowmid, fit_upmid, fit_hi, label = 'stratifiedOLS',
           dep.var.labels=c("Life expectancy"),
-          title="OLS model predicting life expectancies from 2000 to 2015 stratifeid by country income categories", align=TRUE, 
+          title="OLS model predicting life expectany, 2000 - 2016, stratifeid by country income categories, ", align=TRUE, 
           covariate.labels=c(
   "Current Health Expenditure as percent of GDP",
   "Government Health Expenditure as percent of GDP", 
@@ -343,15 +350,16 @@ stargazer(fit_low, fit_lowmid, fit_upmid, fit_hi, label = 'stratifiedOLS',
   "Population (millions)", "GDP","Year", "Constant"),
           column.labels=c("Low","Low-mid", "Up-mid", "High"),
           omit.stat=c("LL","ser","f"), ci=TRUE, single.row=FALSE, 
-  header=FALSE, style = 'demography')
+  header=FALSE, style = 'demography', table.placement = "!")
 ```
-
 \elandscape
 
-Table \@ref(stratifiedOLS) presents XXXXXXX.
+
 
 Discussion
 ==========
+In this study, we explored the association between compulsory health insurance and life expectancy in 184 countries over 16 years. Our regression models revealed that compulsory health insurance was significantly associated with life expectancy, after adjusting for country level characteristics, health expenditure and other health financing arrangements.
+
 
 
 

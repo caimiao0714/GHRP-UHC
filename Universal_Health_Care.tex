@@ -114,9 +114,14 @@
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-\hl{government health expenditure and life expectancy.}
+\hl{compulsory health insurance and life expectancy.}
 
-{[}\protect\hyperlink{ref-wagstaff2018progress}{1}{]}.
+In 2010, approximately 1.2 billion people still live in extreme poverty in the world {[}\protect\hyperlink{ref-olinto2013state}{1}{]}.
+Poverty is the primary cause of ill-health and loss of life expectancy with exposure to risky environment and insufficient access to health care service {[}\protect\hyperlink{ref-world2001dying}{2}{]}.
+To decrease the share of out-of-pocket spending and ensure access to health care among the economically disadvantaged population, health care insurance coverage and prepayment schemes are widely established in health systems around the world {[}\protect\hyperlink{ref-wagstaff2018progress}{3}{]}.
+In developing countries, compulsory health insurance is widely introduced as an effective tool to concentrate resources in the health sector and provide needed medical service to the low-income households {[}\protect\hyperlink{ref-abel1992health}{4}--\protect\hyperlink{ref-ensor1999developing}{7}{]}.
+
+In most countries, compulsory health insurance and governmental schemes are the main sources of health care expenditure {[}\protect\hyperlink{ref-healthglance2017}{8}{]}.
 
 \hypertarget{methods}{%
 \section{Methods}\label{methods}}
@@ -124,57 +129,56 @@
 \hypertarget{data-source}{%
 \subsection{Data source}\label{data-source}}
 
-We extracted country level data from the Global Health Expenditure Database on the World Health Organization (WHO) website {[}\protect\hyperlink{ref-WHOdata}{2}{]}.
+We extracted country level data from the Global Health Expenditure Database on the World Health Organization (WHO) website {[}\protect\hyperlink{ref-WHOdata}{9}{]}.
 This database provides detailed comparable health expenditure data in around 190 countries from 2000 to 2016.
 These health expenditure variables include current health expenditure (CHE) decomposition: domestic government health expenditure, private health expenditure, and out-of-pocket (OOP) payment as percent of CHE;
 financing arrangements decomposition: compulsory financing arrangements, government financing arrangements, compulsory health insurance, household OOP payment as percent of CHE; CHE and government health expenditure as percent of gross domestic product (GDP).
 
-The Global Health Observatory data repository by the WHO provides global health priority data by country in multiple years {[}\protect\hyperlink{ref-worldbank}{3}{]}.
-We obtained life expectancy, GDP, and population data in provided countries from 2000 to 2016.
+Besided country specific decomposed health expenditure and financing arrangements, we also extracted life expectancy, GDP, and population data between 2000 and 2016 in the listed countries from the World Bank Open Data {[}\protect\hyperlink{ref-worldbank}{10}{]}.
 Both databases are publicly available, with downloadable comma-separated values or Microsoft Excel files provided on the WHO website.
 The two databases were then merged according to two common keys, country name and year.
 
 \hypertarget{variable-selection}{%
 \subsection{Variable selection}\label{variable-selection}}
 
-The outcome variable in this study was the life expectancy at birth in a country in a specific year.
+We considered life expectancy at birth in a country in a specific year at the outcome variable in this study.
 It reflects the overll mortality level of all age groups in a country in a given year.
-Life expectancy is one of the most widely used measure of mortality and burden of disease in previous literature {[}\protect\hyperlink{ref-lee2012effect}{4}--\protect\hyperlink{ref-mathers2015causes}{7}{]}.
+Life expectancy is one of the most widely used measure of mortality and burden of disease in previous literature {[}\protect\hyperlink{ref-lee2012effect}{11}--\protect\hyperlink{ref-mathers2015causes}{14}{]}.
 
-We used four sets of explanatory variables to predict life expectancy.
-Country level general characteristics include population (in millions), year (2000 to 2015), and GDP (in billions).
-The GDP data were reported in constant 2010 prices, which were adjusted for the effects of price inflation {[}\protect\hyperlink{ref-worldbankconstant}{8}{]}.
+We included three key sets of explanatory variables to predict life expectancy in the 184 countries over time.
+Country level general characteristics included population (in millions), year (2000 to 2015), and GDP (in billions).
+The GDP data were reported in constant 2010 prices, which were adjusted for the effects of price inflation {[}\protect\hyperlink{ref-worldbankconstant}{15}{]}.
 Current health expenditure (CHE) and government health expenditure (GGHE-D) as percent of GDP were used to account for the investment in healthcare in a country.
-Compulsory financing arrangements and compulsory health insurance as percent of the CHE were two major sources of public financing arrangements.
+Compulsory financing arrangements and compulsory health insurance as percent of the CHE were included to account for different sources of financing arrangements.
 Private health expenditure and OOP payment as percent of the CHE were two sources healthcare expenditure.
+These percents varied in the range of 0 and 100.
 
 \hypertarget{statistical-analyses}{%
 \subsection{Statistical Analyses}\label{statistical-analyses}}
 
-We excluded observations with missing data in either the dependent variable or any of the explanatory variables (n = 294), which resulted in 2,975 complete observations (91\% of the original data) from 184 countries.
+Observations with missing data in either the dependent variable or any of the explanatory variables were excluded, and we ended up with 2,975 complete observations (91\% of the original data) from 184 countries.
+Since only 166 of the 184 countries (90.2\%) had complete data in the sixteen-year period (2000 to 2016), our empirical analysis relied on an unbalanaced country-level panel data.
+Among the 184 sample countries, there were 49 in African Region, 35 in Region of the America, 19 in South-East Asia Region, 51 in European Region, 10 in Eastern Mediterranean Region and 23 in Western Pacific Region {[}\protect\hyperlink{ref-WHOregion}{16}{]}.
 
-A pooled ordinary least square model were used to estimate the association between compulsory health insurance and life expectancy among the 183 countries. Since high and low income countries were characterized by different patterns of life expectancy and health financing schemes, we further conducted stratified analyses among the four income category countries to allow for potentially different patterns of association.
+We estimated the association between compulsory health insurance and life expectancy among the 183 countries using an ordinary least square model, accounting for all the covariates and time trend fixed-effects.
+Since high and low income countries can be characterized by different patterns of life expectancy and health financing schemes, we further conducted stratified analyses among the four income category countries to allow for potentially different patterns of association between compulsory health insurance and life expectancy among the 183 countries.
+Our main hypothesis is that compulsory health insurance is positively associated with life expectancy.
 
-Point and interval estimates (95\% confidence intervals, 95\% CI), as well as the p-values, were reported for all independent variables.
+We reported point and interval estimates (95\% confidence intervals, 95\% CI), as well as the significance of all independent variables.
 A p-value less than 0.05 is viewed as statistically significant.
-All data cleaning, visualization, statistical modelling, and reporting were performed using R 3.5.3 {[}\protect\hyperlink{ref-R353}{9}{]}.
-In an effort to promote reproducible research, we have created a public GitHub repository to store all the data and R code we use to write this paper.
+All data cleaning, visualization, statistical modelling, and reporting were performed using statistical computing and graphics environment R, version 3.5.3 {[}\protect\hyperlink{ref-R353}{17}{]}.
+In an effort to promote reproducible research, we have created a public GitHub repository to store all the data and R code we used to write this paper.
 Interested readers can find them at \url{https://github.com/caimiao0714/GHRP-UHC}.
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
 
-\begin{figure}
-\centering
-\includegraphics{Figures/fig1.pdf}
-\caption{\label{fig:fig1}Life expectancy in 139 countries from 2000 to 2015}
-\end{figure}
-
-Figure \ref{fig:fig1} demonstrates the trend of life expectancy in the 139 countries over time, with each line represents a country while a color stands for an income category. The life expectancy in the studied countries were generally increasing from 2010 to 2015. The most significant pattern in the plot was that life expectancy was strongly influenced by income group: the high income countries have the highest life expectancy, while the low income countries generally had the lowest life expectancy. It was also to be noted that the variance of life expectancy in low and low-mid income countries were much higher than that in up-mid and high income countries.
+\hypertarget{characteristics-of-the-countries-by-income-group}{%
+\subsection{Characteristics of the countries by income group}\label{characteristics-of-the-countries-by-income-group}}
 
 \begin{table}[t]
 
-\caption{\label{tab:unnamed-chunk-2}Descrptive statistics (2000-2016)}
+\caption{\label{tab:descriptive}Characteristics of the 184 countries by income group, 2000 - 2016}
 \centering
 \resizebox{\linewidth}{!}{
 \begin{tabular}{lllll}
@@ -196,12 +200,26 @@ GDP & 0.90 (0.86) & 8.54 (24.51) & 28.61 (89.20) & 86.51 (223.73)\\
 \end{tabular}}
 \end{table}
 
+Table \ref{tab:descriptive} presents the characteristics of the study countries stratified by income group. Consistent with Figure 1, high income countries had the highest average life expectancy, followed by up-mid, low-mid, and low income countries. With regard to healthcare expenditure, it appeared that lower income countries had less government health expenditure as percent of GDP, more private health expenditure and OOP payments as percent of GDP, compared to higher income countries. In terms of financing arrangement, higher income countries had higher percent of compulsory financing arrangements and compulsory health insurance as percent of current health expenditure. Compared to low-mid and up-mid income countries, high and low income countries had less population but more current health expenditure as percent of GDP.
+
 \hl{This is not a panel data. Are you sure that 139 countries from 2000 to 2015 were included in Figure 1? It seemed that over 170 countries were included; Data from 2016 was also included in the linear regression models}
 
-\hl{Xiaojun Lin, create the Table 1 for f1. write results for Table 1, 2, 3 and Figure 1.}
+\hypertarget{life-expectancy-time-trend-in-different-income-groups}{%
+\subsection{Life expectancy time trend in different income groups}\label{life-expectancy-time-trend-in-different-income-groups}}
 
-\begin{table}[!htbp] \centering 
-  \caption{OLS model predicting life expectancies in 139 countries from 2000 to 2015} 
+\begin{figure}
+\centering
+\includegraphics{Figures/fig1.pdf}
+\caption{\label{fig:fig1}Life expectancy in 184 countries stratified by country income group, 2000 - 2016}
+\end{figure}
+
+Figure \ref{fig:fig1} demonstrates the trend of life expectancy in the 184 countries over the sixteen-year period, with each line represents a country while a color stands for an income category. The life expectancy in the studied countries were generally linearly increasing from 2010 to 2015. The most significant pattern in the plot was that life expectancy was strongly influenced by income group: the high income countries had the highest life expectancy, which increased from about 77 in 2000 to around 80 years old in 2016; the low income countries generally had the lowest life expectancy, which increased from around 50 to about 58 years old. The gap of life expectancy between high and low income countries had narrowed from 2000 to 2016. It was also to be noted that the variance of life expectancy in low and low-mid income countries were much higher than that in up-mid and high income countries.
+
+\hypertarget{potential-life-expectancy-gain-by-compulsory-health-insurance}{%
+\subsection{Potential life expectancy gain by compulsory health insurance}\label{potential-life-expectancy-gain-by-compulsory-health-insurance}}
+
+\begin{table}[H] \centering 
+  \caption{OLS model predicting life expectancy in 184 countries, 2000 - 2016} 
   \label{poolOLS} 
 \begin{tabular}{@{\extracolsep{5pt}}lc} 
 \\[-1.8ex]\hline \\[-1.8ex] 
@@ -243,12 +261,17 @@ Adjusted R$^{2}$ & 0.694 \\
 \end{tabular} 
 \end{table}
 
-Table \ref{poolOLS} demonstrates XXXXXXX.
+Table \ref{poolOLS} presents the overall relationship between compulsory health insurance and life expectancy. Controlling for other covariates, one percent increase in compulsory health insurance as percent of CHE was associated with 0.035 years (95\% CI: {[}0.025, 0.045{]}) increase in life expectancy overall.
+
+\hypertarget{potential-life-expectancy-gain-by-compulsory-health-insurance-in-different-income-groups}{%
+\subsection{Potential life expectancy gain by compulsory health insurance in different income groups}\label{potential-life-expectancy-gain-by-compulsory-health-insurance-in-different-income-groups}}
+
+Table \ref{stratifiedOLS} presents relationship between compulsory health insurance as percent of CHE and life expectancy in different income group countries. The percent of compulsory health insurance was positive associated with life expectancy among low (\(\beta = 0.224\), 95\% CI: {[}0.055, 0.392{]}), low-mid (\(\beta = 0.243\), 95\% CI: {[}0.195, 0.291{]}), and up-mid income (\(\beta = 0.061\), 95\% CI: {[}0.045, 0.078{]}) countries. However, this association turned out to be negative among high income countries (\(\beta = -0.011\), 95\% CI: {[}-0.018, 0.005{]}), although the effect size was very small.
 
 \begin{landscape}
 
-\begin{table}[!htbp] \centering 
-  \caption{OLS model predicting life expectancies from 2000 to 2015 stratifeid by country income categories} 
+\begin{table}[!] \centering 
+  \caption{OLS model predicting life expectany, 2000 - 2016, stratifeid by country income categories, } 
   \label{stratifiedOLS} 
 \begin{tabular}{@{\extracolsep{5pt}}lD{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} } 
 \\[-1.8ex]\hline \\[-1.8ex] 
@@ -282,14 +305,13 @@ Adjusted R$^{2}$ & \multicolumn{1}{c}{0.379} & \multicolumn{1}{c}{0.296} & \mult
 \hline \\[-1.8ex] 
 \multicolumn{5}{l}{$^{*}$p $<$ .05; $^{**}$p $<$ .01; $^{***}$p $<$ .001} \\ 
 \end{tabular} 
-\end{table}
-
+\end{table} 
 \end{landscape}
-
-Table \ref{stratifiedOLS} presents XXXXXXX.
 
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
+
+In this study, we explored the association between compulsory health insurance and life expectancy in 184 countries over 16 years. Our regression models revealed that compulsory health insurance was significantly associated with life expectancy, after adjusting for country level characteristics, health expenditure and other health financing arrangements.
 
 \hypertarget{acknowledgements}{%
 \section*{Acknowledgements}\label{acknowledgements}}
@@ -314,32 +336,56 @@ All data and associated R code are public available at the GitHub repository \te
 \addcontentsline{toc}{section}{References}
 
 \hypertarget{refs}{}
+\leavevmode\hypertarget{ref-olinto2013state}{}%
+1. Olinto P, Beegle K, Sobrado C, Uematsu H, others. The state of the poor: Where are the poor, where is extreme poverty harder to end, and what is the current profile of the world's poor. Economic Premise. 2013;125:1--8.
+
+\leavevmode\hypertarget{ref-world2001dying}{}%
+2. Organization WH, others. Dying for change: Poor people's experience of health and ill-health. 2001.
+
 \leavevmode\hypertarget{ref-wagstaff2018progress}{}%
-1. Wagstaff A, Flores G, Smitz M-F, Hsu J, Chepynoga K, Eozenou P. Progress on impoverishing health spending in 122 countries: A retrospective observational study. The Lancet Global Health. 2018;6:e180--92.
+3. Wagstaff A, Flores G, Smitz M-F, Hsu J, Chepynoga K, Eozenou P. Progress on impoverishing health spending in 122 countries: A retrospective observational study. The Lancet Global Health. 2018;6:e180--92.
+
+\leavevmode\hypertarget{ref-abel1992health}{}%
+4. Abel-Smith B. Health insurance in developing countries: lessons from experience. Health policy and Planning. 1992;7:215--26.
+
+\leavevmode\hypertarget{ref-abel1994employer}{}%
+5. Abel-Smith B. Employer's willingness to pay: the case for compulsory health insurance in Tanzania. Health Policy and Planning. 1994;9:409--18.
+
+\leavevmode\hypertarget{ref-jowett2003impact}{}%
+6. Jowett M, Contoyannis P, Vinh ND. The impact of public voluntary health insurance on private health expenditures in Vietnam. Social science \& medicine. 2003;56:333--42.
+
+\leavevmode\hypertarget{ref-ensor1999developing}{}%
+7. Ensor T. Developing health insurance in transitional Asia. Social Science \& Medicine. 1999;48:871--9.
+
+\leavevmode\hypertarget{ref-healthglance2017}{}%
+8. OECD. Health at a Glance 2017. 2017. doi:\href{https://doi.org/https://doi.org/https://doi.org/10.1787/health_glance-2017-en}{https://doi.org/https://doi.org/10.1787/health\_glance-2017-en}.
 
 \leavevmode\hypertarget{ref-WHOdata}{}%
-2. The World Health Organization. Global Health Expenditure Database. 2016. \url{http://apps.who.int/nha/database/Select/Indicators/en}. Accessed 20 Mar 2019.
+9. The World Health Organization. Global Health Expenditure Database. 2016. \url{http://apps.who.int/nha/database/Select/Indicators/en}. Accessed 20 Mar 2019.
 
 \leavevmode\hypertarget{ref-worldbank}{}%
-3. The World Bank. World Bank Open Data. 2018. \url{https://data.worldbank.org/}. Accessed 6 Apr 2018.
+10. The World Bank. World Bank Open Data. 2018. \url{https://data.worldbank.org/}. Accessed 6 Apr 2018.
 
 \leavevmode\hypertarget{ref-lee2012effect}{}%
-4. Lee I-M, Shiroma EJ, Lobelo F, Puska P, Blair SN, Katzmarzyk PT, et al. Effect of physical inactivity on major non-communicable diseases worldwide: An analysis of burden of disease and life expectancy. The lancet. 2012;380:219--29.
+11. Lee I-M, Shiroma EJ, Lobelo F, Puska P, Blair SN, Katzmarzyk PT, et al. Effect of physical inactivity on major non-communicable diseases worldwide: An analysis of burden of disease and life expectancy. The lancet. 2012;380:219--29.
 
 \leavevmode\hypertarget{ref-salomon2012healthy}{}%
-5. Salomon JA, Wang H, Freeman MK, Vos T, Flaxman AD, Lopez AD, et al. Healthy life expectancy for 187 countries, 1990--2010: A systematic analysis for the global burden disease study 2010. The Lancet. 2012;380:2144--62.
+12. Salomon JA, Wang H, Freeman MK, Vos T, Flaxman AD, Lopez AD, et al. Healthy life expectancy for 187 countries, 1990--2010: a systematic analysis for the Global Burden Disease Study 2010. The Lancet. 2012;380:2144--62.
 
 \leavevmode\hypertarget{ref-bennett2015future}{}%
-6. Bennett JE, Li G, Foreman K, Best N, Kontis V, Pearson C, et al. The future of life expectancy and life expectancy inequalities in england and wales: Bayesian spatiotemporal forecasting. The Lancet. 2015;386:163--70.
+13. Bennett JE, Li G, Foreman K, Best N, Kontis V, Pearson C, et al. The future of life expectancy and life expectancy inequalities in England and Wales: Bayesian spatiotemporal forecasting. The Lancet. 2015;386:163--70.
 
 \leavevmode\hypertarget{ref-mathers2015causes}{}%
-7. Mathers CD, Stevens GA, Boerma T, White RA, Tobias MI. Causes of international increases in older age life expectancy. The Lancet. 2015;385:540--8.
+14. Mathers CD, Stevens GA, Boerma T, White RA, Tobias MI. Causes of international increases in older age life expectancy. The Lancet. 2015;385:540--8.
 
 \leavevmode\hypertarget{ref-worldbankconstant}{}%
-8. The World Bank. What is the difference between current and constant data? 2018. \url{https://datahelpdesk.worldbank.org/knowledgebase/articles/114942-what-is-the-difference-between-current-and-constan}. Accessed 6 Apr 2018.
+15. The World Bank. What is the difference between current and constant data? 2018. \url{https://datahelpdesk.worldbank.org/knowledgebase/articles/114942-what-is-the-difference-between-current-and-constan}. Accessed 6 Apr 2018.
+
+\leavevmode\hypertarget{ref-WHOregion}{}%
+16. The World Health Organization. Definition of regional groupings. 2019. \url{https://www.who.int/healthinfo/global_burden_disease/definition_regions/en/}. Accessed 20 Mar 2019.
 
 \leavevmode\hypertarget{ref-R353}{}%
-9. R Core Team. R: A language and environment for statistical computing. Vienna, Austria: R Foundation for Statistical Computing; 2019. \url{https://www.R-project.org/}.
+17. R Core Team. R: A Language and Environment for Statistical Computing. Vienna, Austria: R Foundation for Statistical Computing; 2019. \url{https://www.R-project.org/}.
 
 \end{document}
 
