@@ -9,6 +9,7 @@ stargazer(codebook1[1:33,], summary=FALSE, rownames=FALSE,
 ```
 \elandscape
 
+Add explanation on multicollinearity and no dummy variable on time effect.
 
 
 > names(f0)
