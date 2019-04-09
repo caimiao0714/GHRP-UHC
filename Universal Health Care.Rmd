@@ -5,9 +5,6 @@ author:
   - name: Miao Cai
     email: miao.cai@slu.edu
     affiliation: SLU
-  - name: Asabe Garba
-    email: asabe.garba@slu.edu
-    affiliation: SLU
   - name: Xin Li
     email: xl60@iu.edu
     affiliation: WHU
@@ -15,8 +12,17 @@ author:
     email: xjlin@hust.edu.cn
     affiliation: SCU
     footnote: Corresponding Author
+  - name: Asabe Garba
+    email: asabe.garba@slu.edu
+    affiliation: SLU
   - name: Ziqi Peng
     email: ziqi.peng@slu.edu
+    affiliation: SLU 
+  - name: Thembekile Shato 
+    email: thembekile.shato@slu.edu
+    affiliation: SLU
+  - name: Ucheoma Nwaozuru
+    email: ucheoma.nwaozuru@slu.edu
     affiliation: SLU
 address:
   - code: SLU
@@ -48,14 +54,15 @@ header-includes:
   - \usepackage{setspace}
   - \usepackage{dcolumn}
 abstract: |
-  This is the abstract.
-
-  It consists of two paragraphs.
-
+  | **Background: **
+  | **Methods: **
+  | **Results: **
+  | **Conclusion: **
+  
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, eval=FALSE, cache = FALSE, fig.pos = 'H')
+knitr::opts_chunk$set(echo = FALSE, eval=FALSE, cache = TRUE, fig.pos = 'H')
 ```
 
 \newcommand{\blandscape}{\begin{landscape}}
@@ -65,19 +72,19 @@ knitr::opts_chunk$set(echo = FALSE, eval=FALSE, cache = FALSE, fig.pos = 'H')
 Introduction
 ============
 
-Owing to the cumulative achievement of economy growth and health care coverage, both the life expectancy at birth (LEAB) and healthy life expectancy (HLE) have significantly risen worldwide [@bor2013increases; @mathers2015causes]. 
-However, life expectancy is still unevenly distributed in different income group, education, and regions across the world [@world2018global]. 
+Owing to the cumulative achievement of economy growth and health care coverage, both the life expectancy at birth and healthy life expectancy have significantly risen worldwide [@bor2013increases; @mathers2015causes]. 
+However, life expectancy is still unevenly distributed in different income group, education, and regions across the world [@world2018global]. **NEED some reference and statistics on unevenly distributed life expectancy in the world.**
 
 
-Employment [@assari2018life], education [@baker2011education], diet and quality of life [@rehm2018drinking], environment [@schwartz2018estimating], government health expenditure [@jakovljevic2016life; @ranabhat2018influence], and income [@wilkinson2018impact] have been reported to have significant effect on the life expectancy in developing and  developed countries. 
-Among all the potential factors, poverty is the primary cause of ill-health and loss of life expectancy since it exposes people to risky environment and insufficient access to health care service [@world2001dying; @ezeh2017history].
+Employment, education, diet and quality of life, environment, government health expenditure, and income have been reported to have significant effect on the life expectancy in developing and  developed countries [@assari2018life; @baker2011education; @schwartz2018estimating; @jakovljevic2016life; @ranabhat2018influence; @wilkinson2018impact]. 
+Among all the potential factors, poverty is the primary cause of ill-health and loss of life expectancy since it exposes people to risky environment and insufficient access to health care service [@world2001dying; @ezeh2017history; @rehm2018drinking].
 Globally, approximately 1.2 billion people still live in extreme poverty and 2.7 billion live in moderate poverty [@olinto2013state]. 
 To decrease the share of out-of-pocket spending and ensure access to health care among the economically disadvantaged population,  health care insurance coverage and prepayment schemes are widely established in health systems around the world [@wagstaff2018progress].
 In developing countries, compulsory health insurance is widely introduced as an effective tool to concentrate resources in the health sector and provide needed medical service to the low-income households [@abel1992health; @abel1994employer; @jowett2003impact; @ensor1999developing; @meng2015consolidating].
 
-Compulsory health insurance has been known as one of the effective ways to achieve Universal Health Coverage (UHC) and is gaining growing attention [@wagstaff2018progress]. Compulsory health insurance was firstly introduced in Germany in 1883, namely the Bismarck sickness insurance, which guaranteed that all the workers and their family had access to health service [@walker1969compulsory].  Then Australia (1888), Hungary (1891), England (1911) and Japan (1922) respectively established national compulsory health insurance system [@walker1969compulsory]. Most countries in the world have in operation either national compulsory insurance plans or plans having many of the same basic characteristics [@healthglance2017]. \hl{Some reference on CHI and life expectancy.} Brown et al. investigated the casual link between the CHI and morality rate in Prussia and found that CHI caused the mortality decline; the same conclusion was reported in the research [@bauernschuster2017bismarck]. However, to our best knowledge, there have been inadequate investigation of its long-term influence on life expectancy. The association between compulsory health insurance and life expectancy in different countries, and the strength and the changes have not been systematically investigated and compared.  
+Compulsory health insurance has been known as one of the effective ways to achieve Universal Health Coverage and is gaining growing attention [@wagstaff2018progress]. Compulsory health insurance was firstly introduced in Germany in 1883, namely the Bismarck sickness insurance, which guaranteed that all the workers and their family had access to health service [@walker1969compulsory].  Then Australia (1888), Hungary (1891), England (1911) and Japan (1922) respectively established national compulsory health insurance system [@walker1969compulsory]. Most countries in the world have in operation either national compulsory insurance plans or plans with similar characteristics [@healthglance2017]. **NEED some reference on compulsory health insurance and life expectancy.**. However, to our best knowledge, there have been inadequate investigation of its long-term influence on life expectancy. The association between compulsory health insurance and life expectancy in different countries, and the strength and the changes have not been systematically investigated and compared.  
 
-
+The current study attempts to address some of the main gaps on the association between compulsory health insurance and life expectancy among different countries over time in previous literature. Using country-level longitudinal data between 2000 and 2016, the purpose of this study is to examine the association between compulsory health insurance and life expectancy, and explore different patterns of relationship among low, low-mid, up-mid, and high income countries respectively. 
 
 
 Methods
@@ -110,8 +117,10 @@ Current health expenditure (CHE) and government health expenditure (GGHE-D) as p
 Compulsory financing arrangements and compulsory health insurance as percent of the CHE were included to account for different sources of financing arrangements.
 Private health expenditure and OOP payment as percent of the CHE were two sources healthcare expenditure.
 These percents varied in the range of 0 and 100.
+We excluded variables that could cause multicollinearity in our statistical models, as diagnosed by the variance inflation factor.
 
-\hl{the income group criteria}
+The income group of a country was classfied into four groups based on the World Bank's classification criterion for that fiscal year: low, low-mid, up-mid, and high [@worldbankincome]. This income classification is on the basis of national income per person in each country in a year and can vary in different years [@worldbankincome].
+
 
 Statistical Analyses
 --------------------
