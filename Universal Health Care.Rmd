@@ -9,7 +9,7 @@ author:
     email: asabe.garba@slu.edu
     affiliation: SLU
   - name: Xiaojun Lin
-    email: xjlin@hust.edu.cn
+    email: linxiaojun1993@gmail.com
     affiliation: SCU
     footnote: Corresponding Author
   - name: Xin Li
@@ -54,10 +54,10 @@ header-includes:
   - \usepackage{setspace}
   - \usepackage{dcolumn}
 abstract: |
-  | **Background: ** Wide discrepancies in life expectancy still exist across the world due to variations in income levels and educational attainment. The objective of this study is to investigate the association between compulsory health insurance and life expectancy and whether there are heterogeneous impacts on life expectancy among different income groups.
-  | **Methods: ** Country-level data for 184 countries from the Global Health Expenditure Database from 2000 to 2016 were used in this study. Ordinary least square models were applied to esitmate the association between compulsory health insurance and life expectancy, adjusting for country level characteristics, health expenditure and other health financing arrangements.
-  | **Results: **  A total of 2,975 complete country-year observations from 184 countries were included in this study. One percent increase in compulsory health insurance as percent of current health expenditure (CHE) was associated with 0.035 years (95% CI: [0.025, 0.045]) increase in life expectancy overall. In the subgroup analysis of country income group, we found that the percent of compulsory health insurance is positively associated with life expectancy among low ($\beta = 0.224$, 95% CI: [0.055, 0.392]), low-mid ($\beta = 0.243$, 95% CI: [0.195, 0.291]), and up-mid income ($\beta = 0.061$, 95% CI: [0.045, 0.078]) countries. However, this association turned out to be negative among high income countries ($\beta = -0.011$, 95% CI: [-0.018, 0.005]).
-  | **Conclusion: ** Compulsory health insurance is associated with life expectancy in 184 countries. Increasing the compulsory health insurance as percentage of CHE may improve life expectancy among low and middle income countries.
+  | **Background: ** Wide discrepancies in life expectancy still exist globally due to disparities in income levels and educational attainment. The objective of this study was to investigate the association between compulsory health insurance and life expectancy and any heterogeneous impacts on life expectancy that may have been present among the different income groups.
+  | **Methods: ** This study used 2000-2016 country-level data for 184 countries from the Global Health Expenditure Database. Ordinary least square models were applied to estimate the association between compulsory health insurance and life expectancy while adjusting for country-level characteristics, health expenditure, and other health financing arrangements.
+  | **Results: **  A total of 2,975 complete country-year observations from 184 countries were included in this study. Overall, one percent increase in compulsory health insurance as percent of current health expenditure (CHE) was associated with a 0.035 year (95% Confidence Interval (CI): [0.025, 0.045]) increase in life expectancy overall. In the subgroup analysis of country income group, we found that the percent of compulsory health insurance was positively associated with life expectancy among low ($\beta = 0.224$, 95% CI: [0.055, 0.392]), low-mid ($\beta = 0.243$, 95% CI: [0.195, 0.291]), and up-mid income ($\beta = 0.061$, 95% CI: [0.045, 0.078]) countries. However, this association was found to be negative among high-income countries ($\beta = -0.011$, 95% CI: [-0.018, 0.005]).
+  | **Conclusion: ** Compulsory health insurance was associated with life expectancy in 184 countries. Increasing the compulsory health insurance as percentage of CHE may improve life expectancy and should be considered as a way of improving population health for low- and mid-income countries.
   
 ---
 
@@ -72,25 +72,25 @@ knitr::opts_chunk$set(echo = FALSE, eval=FALSE, cache = TRUE, fig.pos = 'H')
 Introduction
 ============
 
-Life expectancy is defined as the average number of years that a person will live from birth based on measures such as birth year, gender, and current age. This calculation assumes that mortality rates will remain the same as time progresses. The greatest factors that impact life expectancy overall include income, quality of public health, medical care, and diet.  [@Statista]. 
+Life expectancy is defined as the average number of years that a person will live from birth based on measures such as birth year, gender, and current age. This calculation assumes that mortality rates will remain the same as time progresses. The most significant factors that impact life expectancy overall include income, quality of public health, medical care, and diet.  [@Statista]. 
 Due to increasing rates of economic growth and access to health care coverage,  life expectancy at birth and healthy life expectancy have significantly risen worldwide [@bor2013increases; @mathers2015causes]. 
 However, life expectancy disparities still exist across the world due to variations in income level and educational attainment [@world2018global]. 
 According to the World Health Organization (WHO), the average life expectancy globally in 2016 was 72 years of age. Global life expectancy ranged from 61.2 years in the African Region to 77.5 years in the European Region, a ratio of 1.3 between the regions [@WHOobserve].
 
 
 Employment, education, diet, quality of life, environmental conditions, government health expenditure, and income have been reported as the main risk factors that have significant effects on life expectancy  in both developed and developing countries [@assari2018life; @baker2011education; @cotlear2015overcoming; @schwartz2018estimating; @jakovljevic2016life; @ranabhat2018influence; @wilkinson2018impact]. 
-Among these risk factors, poverty (income level) is the primary cause of ill-health and decreased life expectancy due to its negative effect on environmental sustainability and insufficient access to health care services [@world2001dying; @ezeh2017history; @rehm2018drinking].
+Among these risk factors, poverty (income level) is the primary determinant of ill-health and decreased life expectancy due to its negative effect on environmental sustainability and insufficient access to health care services [@world2001dying; @ezeh2017history; @rehm2018drinking].
 Globally, approximately 1.2 billion people live in extreme poverty, and 2.7 billion live in moderate poverty [@olinto2013state]. 
-In order to decrease share of out-of-pocket spending and ensure health care access to economically disadvantaged populations, health insurance coverage and prepayment schemes have been widely established in health care systems around the world [@wagstaff2018progress].
-In developing countries, compulsory health insurance has been successfully implemented u as a tool for concentrating resources in the health sector and providing needed medical service to  low-income households [@abel1992health; @abel1994employer; @jowett2003impact; @ensor1999developing; @meng2015consolidating].
+In order to decrease the share of out-of-pocket spending and ensure health care access to economically disadvantaged populations, health insurance coverage and prepayment schemes have been widely established in health care systems around the world [@wagstaff2018progress].
+In some developing countries, compulsory health insurance has been successfully implemented as a tool for concentrating resources in the health sector and providing needed medical service to  low-income households [@abel1992health; @abel1994employer; @jowett2003impact; @ensor1999developing; @meng2015consolidating].
 
 There is growing attention on compulsory health insurance because it has been proven as an effective way to achieve Universal Health Coverage [@wagstaff2018progress]. 
-Compulsory health insurance, also known as the Bismarck Sickness Insurance, was first introduced in Germany in 1883. 
+Compulsory health insurance was first introduced in Germany in 1883, which was known as the Bismarck Sickness Insurance. 
 It guaranteed that all workers and their families had access to health services [@walker1969compulsory]. 
 Australia (1888), Hungary (1891), England (1911), and Japan (1922) respectively all later adopted national compulsory health insurance systems as well [@walker1969compulsory]. 
 Most countries in the world either use national compulsory insurance plans or a similar type of health care system [@healthglance2017]. 
-Health care spending accounts for the use of health care services and public health services. 
-As a result, there is a clear trend in the relationship between compulsory health insurance and the life expectancy in a country. 
+Health care system spending includes the use of both health care services and public health services. 
+As a result, there is a clear trend seen in the relationship between compulsory health insurance and the life expectancy in a country. 
 As a country’s health expenditure increases, the life expectancy also increases. 
 However, to the best of our knowledge, the exploration of the long-term impact of compulsory health insurance on life expectancy is limited. 
 This includes looking at the association between compulsory health insurance and life expectancy in different countries. 
@@ -104,7 +104,7 @@ Methods
 
 Data source
 ----------
-The country level data that was used for this study was extracted from the Global Health Expenditure Database [@WHOdata]. 
+The country-level data that was used for this study was extracted from the Global Health Expenditure Database [@WHOdata]. 
 This database is sponsored by the World Health Organization (WHO) and provides health expenditure data on 190 countries from years 2000 to 2016. 
 The current health expenditure (CHE) can be decomposed into several variables: domestic government health expenditure, private health expenditure, and percentage of out-of-pocket (OOP) payment; 
 financing arrangements can be decomposed into the variables compulsory financing arrangements, government financing arrangements, compulsory health insurance, household OOP payment as a percent of CHE; 
@@ -124,15 +124,14 @@ It reflected the overall mortality rate of all age groups in a given year by cou
 Life expectancy is one of the most widely used measures of mortality and burden of disease in previous literature  [@lee2012effect; @salomon2012healthy; @bennett2015future; @mathers2015causes].
 
 We included three key sets of explanatory variables to predict life expectancy in the 184 countries over time. 
-Country level general characteristics included population (in millions), year (2000 to 2015), and GDP (in billions). 
+Country-level general characteristics included population (in millions), year (2000 to 2015), and GDP (in billions). 
 The GDP data were reported in constant 2010 prices, which were adjusted for the effects of price inflation [@worldbankconstant]. 
 Current health expenditure (CHE) and government health expenditure (GGHE-D) as percent of GDP were used to account for investment in healthcare for a given country. 
 Compulsory financing arrangements and compulsory health insurance as percent of the CHE were also included to account for any differences in the source of financing arrangements. 
-Private health expenditure and OOP payment as percent of the CHE were two sources of healthcare expenditure. 
-These percents fell in the range of 0 to 100. We excluded variables that could cause multicollinearity in our statistical models, which was determined by the variance inflation factor.
+Private health expenditure and OOP payment as percent of the CHE were two sources of healthcare expenditure that fell in the range of 0 to 100. We excluded variables that could cause multicollinearity in our statistical models, which was determined by the variance inflation factor.
 
-The income group of a country was classified into four groups based on the World Bank’s classification criterion for that fiscal year: low, low-mid, up-mid, and high  [@worldbankincome]. This income classification for each country is based on the national income per person in a year and can vary by year [@worldbankincome]. 
-The year variable was not converted into dummy variables for two reasons: firstly, since there were 16 years of data, creating 15 dummy variables may exhaust the degrees of freedom in our statistical models, especially in stratified analyses; secondly, the life expectancy in different countries was generally linearly correlated with year, as shown in Figure \@ref(fig:fig1).
+The income group of a country was classified into four groups based on the World Bank’s classification criterion for that fiscal year: low, low-mid, up-mid, and high  [@worldbankincome]. The income classification for each country was based on the national income per person in a year which varied by year [@worldbankincome]. 
+The year variable was not converted into dummy variables for two reasons: firstly, since there were 16 years of data, creating 15 dummy variables may have exhausted the degrees of freedom in our statistical models, especially in the stratified analyses; secondly, the life expectancy in different countries was generally linearly correlated with year, as shown in Figure \@ref(fig:fig1).
 
 
 Statistical Analyses
@@ -142,12 +141,12 @@ Since only 166 of the 184 countries (90.2%) had complete data in the seventeen-y
 Among the 184 sample countries, there were 49 in the African Region, 35 in the American Region, 19 in the South-East Asia Region, 51 in the European Region, 10 in the Eastern Mediterranean Region, and 23 in the Western Pacific Region  [@WHOregion].
 
 We estimated the association between compulsory health insurance and life expectancy among the 184 countries using an ordinary least square model that accounted for all the covariates and time trend fixed-effects.
-Since high- and low-income countries can be characterized by different patterns of life expectancy and health financing schemes, we conducted stratified analyses among the four income category countries to allow for potentially different patterns of association between compulsory health insurance and life expectancy among the 184 countries. 
+Since high- and low-income countries can be characterized by different patterns of life expectancy and health financing schemes, we conducted stratified analyses among the four income category countries. This allowed for potentially different patterns of association between compulsory health insurance and life expectancy among the 184 countries. 
 Our main hypothesis was that compulsory health insurance was positively associated with life expectancy.
 
 We reported point and interval estimates (95% confidence intervals, 95% CI), as well as the significance of all independent variables. 
-A p-value less than 0.05 was viewed as statistically significant. 
-All data cleaning, visualization, statistical modelling, and reporting were performed with the use of R software, version 3.5.3 (R Foundation for Statistical Computing) [@R353]. 
+A p-value of less than 0.05 was viewed as statistically significant. 
+All data cleaning, visualization, statistical modeling, and reporting were performed with the use of R software, version 3.5.3 (R Foundation for Statistical Computing) [@R353]. 
 In an effort to promote reproducible research, we created a public GitHub repository to store all the data and R code we used to write this paper. 
 Interested readers can find them at [https://github.com/caimiao0714/GHRP-UHC](https://github.com/caimiao0714/GHRP-UHC).
 
@@ -307,13 +306,13 @@ knitr::include_graphics('Figures/fig1.pdf')
 Table \@ref(tab:descriptive) presents  averages and standard deviations (in parentheses) for the different characteristics of the 184 countries stratified by income group. 
 High-income countries had the highest average life expectancy (77.82 years), followed by up-mid (71.22 years), low-mid (65.45 years), and low-income countries (56.65 years). 
 Figure \@ref(fig:fig1) shows the trends of life expectancy in the 184 countries over the seventeen-year period, with each line representing a country and each color an income category. 
-The life expectancy in the studied countries were generally linear with a clear increase from 2000 to 2016. 
+The life expectancy in the studied countries was generally linear with a clear increase from 2000 to 2016. 
 Consistent with Table \@ref(tab:descriptive) results, the most significant pattern in the plot was that life expectancy was strongly related to income group: the high-income countries had the highest life expectancy, which increased from about 77 in 2000 to around 80 years old in 2016; 
 the low-income countries generally had the lowest life expectancy, which increased from around 50 to about 58 years old. 
-The gap of life expectancy between high- and low-income countries narrowed from 2000 to 2016. 
-It was also to be noted that the variance of life expectancy in low and low-mid income countries were much higher than that in up-mid and high-income countries.
+The gap in life expectancy between high- and low-income countries narrowed from 2000 to 2016. 
+It was also to be noted that the variance of life expectancy in low and low-mid income countries was much higher than that in up-mid and high-income countries.
 
-Regarding healthcare expenditure, it appeared that lower income countries had less government health expenditure as percent of GDP, more private health expenditure, and OOP payments as percent of GDP, compared to higher income countries. In terms of financing arrangement, higher income countries had a higher percent of compulsory financing arrangements and compulsory health insurance as percent of current health expenditure. Compared to low-mid and up-mid income countries, high- and low-income countries had smaller populations but more current health expenditure as percent of GDP.
+Regarding healthcare expenditure, it appeared that lower-income countries had less government health expenditure as percent of GDP, more private health expenditure, and OOP payments as percent of GDP, compared to higher income countries. In terms of the financing arrangement, higher income countries had a higher percent of compulsory financing arrangements and compulsory health insurance as percent of current health expenditure. Compared to low-mid and up-mid income countries, high- and low-income countries had smaller populations but more current health expenditure as percent of GDP.
 
 ## Potential life expectancy gain by compulsory health insurance
 
@@ -354,7 +353,7 @@ covariate.labels=c(
   "Out-of-pocket payment as percent of CHE",
   "Compulsory financing arrangements as percent of CHE",
   "Population (millions)", "GDP","Year", 
-  "Low income country", "Low to middle income country", 
+  "Low-income country", "Low to middle-income country", 
   "Up to middle income country", "Constant"),
   omit.stat=c("LL","ser","f"), ci=TRUE, ci.level=0.95, 
   single.row=FALSE, header=FALSE, 
@@ -364,14 +363,14 @@ covariate.labels=c(
 style = 'demography', table.placement = "H")
 ```
 
-Table \@ref(poolOLS) presents the overall relationship between compulsory health insurance and life expectancy. Controlling for other covariates, there was a one percent increase in compulsory health insurance as percent of CHE that was associated with a 0.035 year (95% CI: [0.025, 0.045]) increase in overall life expectancy. The CHE and GGHE-D as percent of GDP were positively associated with life expectancy. The countries with higher OOP as percent of CHE and lower private health expenditure as percent CHE had higher life expectancies. Compulsory financing arrangements as percent of CHE did not appear to be a significant predictor. In addition, a larger population size was associated with a higher life expectancy, although the
+Table \@ref(poolOLS) presents the overall relationship between compulsory health insurance and life expectancy. After controlling for other covariates, there was a one percent increase in compulsory health insurance as percent of CHE that was associated with a 0.035 year (95% CI: [0.025, 0.045]) increase in overall life expectancy. The CHE and GGHE-D as percent of GDP were positively associated with life expectancy. The countries with higher OOP as percent of CHE and lower private health expenditure as percent CHE had higher life expectancies. Compulsory financing arrangements as percent of CHE did not appear to be a significant predictor. In addition, larger population size was associated with a higher life expectancy, although the
 coefficient was small. Compared to high-income countries, the life expectancy in low-income  as well as the low to middle-income and up to middle-income countries was significantly lower. It was worth noting that the effect size for low-income countries ($\beta = -19.084$, 95% CI: [-19.889, -18.280]) was much larger than the low to middle-income ($\beta = -10.936$, 95% CI: [-11.539, -10.334]) and up to middle-income countries ($\beta = -5.414$, 95% CI: [-5.945, -4.882]), after controlling for potential covariates.
 
 ## Potential life expectancy gain by compulsory health insurance in different income groups
 
-Table \@ref(stratifiedOLS) ppresents the relationship between compulsory health insurance as percent of CHE and life expectancy in the different countries by income group. The percent of compulsory health insurance was positively associated with life expectancy among low ($\beta = 0.224$, 95% CI: [0.055, 0.392]), low-mid ($\beta = 0.243$, 95% CI: [0.195, 0.291]), and up-mid income ($\beta = 0.061$, 95% CI: [0.045, 0.078]) countries. However, this association was found negative among high-income countries ($\beta = -0.011$, 95% CI: [-0.018, 0.005]), , although the effect size was very small. 
+Table \@ref(stratifiedOLS) presents the relationship between compulsory health insurance as percent of CHE and life expectancy in the different countries by income group. The percent of compulsory health insurance was positively associated with life expectancy among low ($\beta = 0.224$, 95% CI: [0.055, 0.392]), low-mid ($\beta = 0.243$, 95% CI: [0.195, 0.291]), and up-mid income ($\beta = 0.061$, 95% CI: [0.045, 0.078]) countries. However, this association was found negative among high-income countries ($\beta = -0.011$, 95% CI: [-0.018, 0.005]), although the effect size was very small. 
 
-The effects of predictors on life expectancy varied across income groups. CHE as percent of GDP was found to be positively correlated with life expectancy in the up-mid income countries. However, this correlation was negative in high-income countries. Similarly, the effect of GGHE-D as percent of GDP on life expectancy changed from negative in up-mid countries to positive in high-income countries. Private Health Expenditure as percent CHE was positively associated with life expectancy among low- and high-income countries but was negatively associated with life expectancy among low-mid and up-mid income countries. For low- and high-income countries, OOP as percent of CHE had negative effects on life expectancy. However, the effect of OOP as percent of CHE on life expectancy was positive among low-mid and up-mid income countries.
+The effects of predictors on life expectancy varied across income groups. CHE as percent of GDP was found to be positively correlated with life expectancy among the up-mid income countries. However, this correlation was negative among high-income countries. Similarly, the effect of GGHE-D as percent of GDP on life expectancy was negative among up-mid countries, and it changed to positive among high-income countries. Private health expenditure as percent CHE was positively associated with life expectancy among low- and high-income countries but was negatively associated with life expectancy among low-mid and up-mid income countries. For low- and high-income countries, OOP as percent of CHE had negative effects on life expectancy. However, the effect of OOP as percent of CHE on life expectancy was positive among low-mid and up-mid income countries.
 
 
 \blandscape
@@ -401,44 +400,88 @@ stargazer(fit_low, fit_lowmid, fit_upmid, fit_hi, label = 'stratifiedOLS',
 Discussion
 ==========
 In this study, we explored the association between compulsory health insurance and life expectancy in 184 countries over a 17-year period. 
-Our regression models revealed that compulsory health insurance was significantly associated with life expectancy, after adjusting for country level characteristics, health expenditure, and other health financing arrangements. 
-Furthermore, compulsory health insurance had positive effects on life expectancy among low, low-mid and up-mid countries, while negative effects among high income countries.
+Our regression models revealed that compulsory health insurance was significantly associated with life expectancy, after adjusting for country-level characteristics, health expenditure, and other health financing arrangements. 
+Furthermore, compulsory health insurance had positive effects on the life expectancy among low, low-mid, and up-mid countries, and negative effects among high-income countries.
 
-It is interesting that the association between compulsory health insurance and life expectancy was different among high income and not high income countries. A positive association between compulsory health insurance and life expectancy was found among low, low-mid, upper-mid countries, which was consistent with previous literature. For example, several studies conducted in Vietnam, a low-mid income country as classified by the World Bank [@worldbankincome], have reported the positive association between health insurance coverage and health outcomes [@jowett2003impact; @jowett2004health; @sepehri2006influence; @Nguyen2012]. Compulsory health insurance is generally encouraged in low and middle income countries to achieve universal coverage, purchase services, and pool risk [@barnighausen2002one; @lagomarsino2012moving].
+It is interesting that the association between compulsory health insurance and life expectancy was different among high-income and non-high-income countries. 
+Consistent with previous literature, a positive association between compulsory health insurance and life expectancy was found among low, low-mid, and upper-mid countries. 
+For example, several studies conducted in Vietnam, a low-mid income country as classified by the World Bank [@worldbankincome], have reported finding a positive association between health insurance coverage and health outcomes [@jowett2003impact; @jowett2004health; @sepehri2006influence; @Nguyen2012]. 
+Compulsory health insurance is generally promoted in low and middle-income countries in order to achieve universal coverage, purchase services, and pool risk [@barnighausen2002one; @lagomarsino2012moving].
 
-There are several possible explanations for the positive assocation between compulsory health insurance and life expectancy. First, increasing the compulsory health insurance as percent of CHE may increase the enrollees' accessibility to health service. Using the introduction of compulsory health insurance in the German Empire in 1884 as a natural experiment, Stefan and colleagues investigated the association between Bismarck's health insurance and the mortality. They aruged that the Bismarck's health insurance reduced mortality significantly, which could be largely explained by an increase in access to health service [@bauernschuster2017bismarck]. Curtis developed a cohort study of patients with cystic fibrosis, and they found that the absence of health insurance is associated with decreased life expectancy [@Curtis1997]. 
+There are several possible explanations for the positive association found between compulsory health insurance and life expectancy. 
+First, increasing the compulsory health insurance as percent of CHE may increase the enrollees' accessibility to health services. 
+Using the introduction of compulsory health insurance in the German Empire in 1884 as a natural experiment, Stefan and colleagues investigated the association between Bismarck's health insurance and mortality rates. 
+They argued that the implementation of Bismarck's health insurance reduced mortality significantly, which could largely be explained by an increase in access to health services [@bauernschuster2017bismarck]. 
+Curtis developed a cohort study of patients with cystic fibrosis, and they found that the absence of health insurance was associated with decreased life expectancy [@Curtis1997]. 
 
-Second, the improving health utilization brought by health insurance may partially explain the gains in life expectancy. Freeman argued that health insurance had significant effects on increasing health utilization, especially on the use of physician services and preventive services, and improving health outcomes, such as self-reported health status and mortality [@Freeman2008]. In China, a typical up-mind income country, Pan et al. found that the beneficiaries of the Urban Resident Basic Medical Insurance had better health than the uninsured [@Pan2016]. Using data from Vietnam, Nguyen reported that participating the voluntary health insurance was associated with the annual outpatient and inpatient visits [@Nguyen2012].
+Second, improving health insurance utilization may also partially explain the gain that was seen in life expectancy. 
+Freeman argued that health insurance had significant effects on increasing health utilization, specifically with the use of both physician and preventive services, improving health outcomes such as self-reported health status and mortality  [@Freeman2008]. 
+For example in China, a typical up-mid income country, Pan et al. found that the beneficiaries of the Urban Resident Basic Medical Insurance had better health outcomes than the uninsured [@Pan2016]. 
+Using data from Vietnam, Nguyen reported that participation in voluntary health insurance was associated with annual outpatient and inpatient visits  [@Nguyen2012].
 
-Most high income countries have a national health insurance system, such as Canada, Germany, the United Kingdom, Japan, with the only exception of the United States [@Emery2010]. Compared to low and middle income countries, they have various alternative approaches to fund health expenditure for their citizens, such as employer provided health insurance [@lagomarsino2012moving]. In contrast to results found among low and middle income countries, we found a negative association between compulsory health insurance and life expectancy among high income countries. Two mechanism may potentially explain this different association. First, economic theory explains that compulsory health insurance schemes expands insurance coverage, but creates additional burden for household and reduces consumer's ability to purchase other items [@koch2010health]. This reallocation of household expenditure may result in greater effects compared to compulsory health insurance benefits. Second, although compulsory health insurance schemes has potential benefits of purchase service and pooling risk, the relative efficiency of them compared to private insurance schemes are to be doubted [@savedoff2012political]. An example is the National Health Service in the United Kingdom, which experienced several round of reforms that targeted improving market competition, quality and efficiency of health care providers [@bevan2011does; @gaynor2013death]. Although the negative association among high income countries was statistically significant, the effect size was small (-0.011) compared to the other three estimates (0.224 for low income countries, 0.243 for low-mid income countries, and 0.061 for up-mid income countries). This likely results from the small variance of life expectancy in high income countries, as shown in Figure \@ref(fig:fig1).
+Most high-income countries have a national health insurance system. This includes Canada, Germany, the United Kingdom, Japan, with the United States as the only exception [@Emery2010].
+Compared to low-  and middle-income countries, high-income countries use various alternative approaches to fund health expenditure for their citizens, such as employer-provided health insurance [@lagomarsino2012moving]. 
+In contrast to the results found among low- and middle-income countries, we saw a negative association between compulsory health insurance and life expectancy among high-income countries. Two mechanisms may potentially explain this difference in the association. First, economic theory explains that compulsory health insurance schemes expand insurance coverage, but they also create an additional monetary burden for a household by reducing the consumer’s ability to purchase other items [@koch2010health]. 
+This consequential reallocation of household expenditure might outweigh the benefits provided by compulsory health insurance. Second, although compulsory health insurance schemes have the potential benefits of purchase service and pooling risk, the relative efficiency of them compared to private insurance schemes are to be doubted [@savedoff2012political]. 
+An example is the National Health Service in the United Kingdom, which experienced several rounds of reform that targeted improving market competition as well as the quality and efficiency of health care providers [@bevan2011does; @gaynor2013death]. 
+Although the negative association among high-income countries was statistically significant, the effect size was small (-0.011) compared to the other three estimates (0.224 for low-income countries, 0.243 for low-mid income countries, and 0.061 for up-mid income countries). This likely resulted from the small variance of life expectancy in high-income countries, as shown in Figure \@ref(fig:fig1).
 
 
-This study contributes to the body of evidence on insurance and life expectancy in the following aspects. First, although the association between health insurance and life expectancy has been investigated in previous works[@Curtis1997; @bauernschuster2017bismarck], few studies shed lights on the gains in life expectancy from increasing the percentage of compulsory health insurance in current health expenditure. Our study fills this research gap by using country-level longitudinal data. Second, empirical studies on insurance and life expectancy were confined to a specific country or region, such as the United States and Germany [@Curtis1997; @bauernschuster2017bismarck]. Given that the health insurance systems vary substaintially across countries, more research is needed to examine the association in multiple countries. To the best of our knowledge, this is the first study to assess the impact of compulsory health insuance on life expectancy among a large number of countries.
+This study contributed to the body of evidence on insurance and life expectancy in several ways. 
+First, although the association between health insurance and life expectancy has been investigated in previous works [@Curtis1997; @bauernschuster2017bismarck], few studies have shed light on how increasing the percentage of compulsory health insurance in current health expenditure results in gains in life expectancy. 
+Our study filled this gap by using country-level longitudinal data. Second, past empirical studies on insurance and life expectancy were confined to a specific country or region, such as the United States and Germany  [@Curtis1997; @bauernschuster2017bismarck]. 
+Given that health insurance systems vary substantially across countries, more research is needed to examine these differences in the association. To the best of our knowledge, this is the first study to assess the impact of compulsory health insurance on life expectancy among many countries.
 
 
-Our study had several limitations. First, the relationships between compulsory health insurance and life expectancy should not be interpreted as causal effects dut to the design of observational study. To conduct causal inference in future studies, researcher can use quasi-experimental design and modern econometric models, such as instrumental variables and regression discontinuity design, to explore the causal effects of compulsory health insurance scheme. Second, our results might be confounded by unmeasured factors, including the sanitation facilities, water and air quality, life style, medical resources and literacy level. Due to data unavailability, we were unable to include these individual or regional level data in our analyses. Therefore, further research based on more comprehensive databases may provide more robust results. Third, although the association between complusory health insurance and life expectancy was unveiled in this study, the underlying mechanisms remain unclear.
+Our study had several limitations. 
+First, the relationships seen between compulsory health insurance and life expectancy cannot be interpreted as causal effects due to this being an observational study. 
+In order to make causal inferences in future studies, researchers can use a quasi-experimental study design and modern econometric models, such as instrumental variables and a regression discontinuity design. 
+This will allow them to explore the causal effects of the compulsory health insurance scheme. Second, our results might be confounded by unmeasured factors, including the sanitation facilities, water, air quality, lifestyle, medical resources, and literacy level. 
+We were unable to include these individual or regional level data in our analyses since they were not available in the data. 
+Therefore, further research based on more comprehensive databases may provide more robust results. 
+Third, although the association between compulsory health insurance and life expectancy was unveiled in this study, the underlying mechanisms behind this association remain unclear.
 
 
 
 Conclusion
 ==========
-This study demostrates that in the period 2000-2016, compulsory health insurance is associated with life expectancy in 184 countries. Increasing the compulsory health insurance as percentage of CHE may improve life expectancy and should be considered as a way of improving population health for low and low-mid income countries.
+This study demonstrated that in the period of 2000-2016, compulsory health insurance was associated with life expectancy in 184 countries. Increasing compulsory health insurance as percentage of CHE may improve life expectancy and should be considered as a way of improving population health for low and low-mid income countries.
 
 
 
 
-Acknowledgements {-}
-================
-We thank the WHO and the World Bank for making the data used in this study publicly available for researchers.
+Availability of data and materials {-}
+==================================
+All data and associated R code are publicly available at the GitHub repository `caimiao0714/GHRP-UHC`, which can be accessed at [https://github.com/caimiao0714/GHRP-UHC](https://github.com/caimiao0714/GHRP-UHC).
+
+
+Author contributions {-}
+====================
+MC, TS, and UN initiated the project. MC, Xiaojun Lin, and Xin Li collected the data and conducted statistical analyses. AG, ZP, and MC wrote the draft of the paper. All coauthors have read and approved the final manuscript.
+
+
+Ethics approval and consent to participate {-}
+==========================================
+The data were publicly available with no human subjects participating, so ethics approval and consent to participate are not applicable here.
+
 
 Funding {-}
 =======
 None.
 
 
-Availability of data and materials {-}
-==================================
-All data and associated R code are public available at the GitHub repository `caimiao0714/GHRP-UHC`, which can be accessed at [https://github.com/caimiao0714/GHRP-UHC](https://github.com/caimiao0714/GHRP-UHC).
+Competing interests {-}
+===================
+The authors declare that they have no competing interests.
+
+
+Acknowledgements {-}
+================
+We thank the WHO and the World Bank for making the data used in this study publicly available for researchers.
+
+
+
+
 
 References {-}
 ==========
